@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progresjon etter 7. årstrinn - Digital kompetanseplan</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .competence-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .competence-table th {
+            background-color: var(--accent-color);
+            color: var(--white);
+            text-align: left;
+            padding: 15px;
+            font-weight: 600;
+        }
+        
+        .competence-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--medium-gray);
+            vertical-align: top;
+        }
+        
+        .competence-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .competence-table ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .competence-table li {
+            margin-bottom: 8px;
+        }
+        
+        .competence-table li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .competence-area {
+            width: 25%;
+            font-weight: 500;
+            color: var(--accent-color);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .back-link i {
+            margin-right: 8px;
+        }
+        
+        .back-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        .lk20-reference {
+            background-color: var(--light-gray);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+        }
+        
+        .lk20-reference h3 {
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            .competence-table, .competence-table tbody, .competence-table tr, .competence-table td {
+                display: block;
+                width: 100%;
+            }
+            
+            .competence-table thead {
+                display: none;
+            }
+            
+            .competence-table td {
+                padding: 10px 15px;
+            }
+            
+            .competence-table td:before {
+                content: attr(data-title);
+                display: block;
+                font-weight: 500;
+                color: var(--accent-color);
+                margin-bottom: 8px;
+            }
+            
+            .competence-area {
+                background-color: var(--light-gray);
+                font-weight: 600;
+            }
+        }
+    </style>
+</head>
+<body class="trinn7">
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Kristiansund kommune logo" class="logo">
+            <h1>Digital kompetanseplan</h1>
+        </div>
+        <nav id="main-nav">
+            <ul>
+                <li><a href="index.html#innledning">Innledning</a></li>
+                <li><a href="index.html#maal">Mål for planen</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Progresjon <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="trinn2.html">2. årstrinn</a>
+                        <a href="trinn4.html">4. årstrinn</a>
+                        <a href="trinn7.html">7. årstrinn</a>
+                    </div>
+                </li>
+                <li><a href="vurdering.html">Vurdering</a></li>
+                <li><a href="ressurser.html">Ressurser for lærere</a></li>
+            </ul>
+        </nav>
+        <button id="menu-toggle" class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <main>
+        <div class="container">
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Tilbake til hovedsiden</a>
+            
+            <section class="hero">
+                <div class="container">
+                    <h2>Progresjon etter 7. årstrinn</h2>
+                    <p>Her finner du en oversikt over kompetansemålene som elevene skal oppnå innen utgangen av 7. årstrinn når det gjelder digital kompetanse. Disse målene bygger på kompetanse fra tidligere årstrinn og forbereder elevene på mer avansert digital læring i ungdomsskolen.</p>
+                </div>
+            </section>
+            
+            <table class="competence-table">
+                <thead>
+                    <tr>
+                        <th>Elevens digitale kompetanse</th>
+                        <th>Mål for opplæringen</th>
+                        <th>Digitale ressurser</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="competence-area" data-title="Elevens digitale kompetanse">Skape og produsere</td>
+                        <td data-title="Mål for opplæringen">
+                            <ul>
+                                <li>Beherske touch-metoden</li>
+                                <li>Utforske, lage og presentere faglig innhold ved bruk av ulike digitale ressurser</li>
+                                <li>Lage sammensatte tekster (tekst, lyd, bilde, video) og publisere og dele dem digitalt</li>
+                                <li>Bruke programmering til å skape spill og interaktive fortellinger</li>
+                                <li>Designe og lage digitale spill og animasjoner med ulike figurer og betingelser</li>
+                                <li>Lage egne databaser og strukturere informasjon i dem</li>
+                                <li>Utforske teknologiske systemer, forklare og beskrive hvordan de virker</li>
+                                <li>Bruke regneark til å organisere og presentere data</li>
+                                <li>Bruke digitale verktøy for å visualisere og simulere faglig innhold</li>
+                            </ul>
+                        </td>
+                        <td data-title="Digitale ressurser">
+                            <ul>
+                                <li>Microsoft 365 (Word, PowerPoint, Excel)</li>
+                                <li>Google Workspace</li>
+                                <li>Scratch</li>
+                                <li>Micro:bit</li>
+                                <li>GeoGebra</li>
+                                <li>Canva</li>
+                                <li>iMovie/WeVideo</li>
+                                <li>Adobe Express</li>
+                                <li>StopMotion</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="competence-area" data-title="Elevens digitale kompetanse">Samhandle og kommunisere</td>
+                        <td data-title="Mål for opplæringen">
+                            <ul>
+                                <li>Samarbeide digitalt om alle deler av en arbeidsprosess</li>
+                                <li>Planlegge og gjennomføre digitale presentasjoner for ulike målgrupper</li>
+                                <li>Reflektere over og diskutere hvordan kommunikasjon påvirkes av digital teknologi</li>
+                                <li>Formulere og etterprøve problemstillinger ved bruk av digitale verktøy og samarbeidsplattformer</li>
+                                <li>Vite hvordan digital kommunikasjon påvirker relasjoner og identitet</li>
+                                <li>Diskutere konsekvenser av digital mobbing og deling på nett</li>
+                            </ul>
+                        </td>
+                        <td data-title="Digitale ressurser">
+                            <ul>
+                                <li>Teams</li>
+                                <li>OneNote</li>
+                                <li>Google Classroom</li>
+                                <li>Padlet</li>
+                                <li>Flip</li>
+                                <li>Mentimeter</li>
+                                <li>Wakelet</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="competence-area" data-title="Elevens digitale kompetanse">Kildebruk</td>
+                        <td data-title="Mål for opplæringen">
+                            <ul>
+                                <li>Vurdere kilders troverdighet og relevans og velge kilder på en reflektert måte</li>
+                                <li>Oppgi kilder etter gjeldende regler</li>
+                                <li>Forklare hvordan algoritmer påvirker informasjonen vi får på nett</li>
+                                <li>Diskutere hva opphavsrett og personvern betyr i digital sammenheng</li>
+                                <li>Skille mellom fakta, meninger og kommersielt innhold på nett</li>
+                                <li>Gjenkjenne falske nyheter og manipulert innhold</li>
+                            </ul>
+                        </td>
+                        <td data-title="Digitale ressurser">
+                            <ul>
+                                <li>Kildekritikk.no</li>
+                                <li>Faktisk.no</li>
+                                <li>NRK Skole</li>
+                                <li>Medietilsynet</li>
+                                <li>Kildekompasset</li>
+                                <li>Wikipedia - Kildekriterier</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="competence-area" data-title="Elevens digitale kompetanse">Digital livsmestring</td>
+                        <td data-title="Mål for opplæringen">
+                            <ul>
+                                <li>Vurdere risiko og håndtere identitet og privatliv i digitale medier</li>
+                                <li>Diskutere fordeler og utfordringer ved digital kommunikasjon</li>
+                                <li>Reflektere over egen og andres digitale identitet</li>
+                                <li>Forstå konsekvenser av digitale fotavtrykk</li>
+                                <li>Analysere virkningen av dataspill og sosiale medier på identitet, relasjoner og livsstil</li>
+                                <li>Bruke digitale ressurser på en kritisk måte som fremmer egen læring</li>
+                                <li>Utvikle strategier for håndtering av digital informasjonsstrøm</li>
+                            </ul>
+                        </td>
+                        <td data-title="Digitale ressurser">
+                            <ul>
+                                <li>Dubestemmer.no</li>
+                                <li>Nettvett.no</li>
+                                <li>Slettmeg.no</li>
+                                <li>Redd Barna - Nettvett</li>
+                                <li>Barneombudet</li>
+                                <li>Ung.no</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="competence-area" data-title="Elevens digitale kompetanse">Digital bevissthet</td>
+                        <td data-title="Mål for opplæringen">
+                            <ul>
+                                <li>Diskutere hvordan teknologi påvirker samfunnet og hverdagen</li>
+                                <li>Reflektere over algoritmer og hvordan de påvirker informasjonen vi får</li>
+                                <li>Diskutere hvordan kunstig intelligens og KI-verktøy fungerer og hvilket potensial de har</li>
+                                <li>Reflektere over digitale fotavtrykk og konsekvensene av disse</li>
+                                <li>Vurdere sammenhengen mellom skjermtid og fysisk og psykisk helse</li>
+                                <li>Analysere hvordan reklame og kommersielt innhold påvirker oss på nettet</li>
+                                <li>Diskutere etiske problemstillinger knyttet til bruk av teknologi</li>
+                            </ul>
+                        </td>
+                        <td data-title="Digitale ressurser">
+                            <ul>
+                                <li>Datatilsynet - Personvern i skolen</li>
+                                <li>Medietilsynet - Barn og medier</li>
+                                <li>AI for Kids - ressurser</li>
+                                <li>ChatGPT for barn (med veiledning)</li>
+                                <li>Teknologirådet - ressurser</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <section class="lk20-reference">
+                <h3>Sammenheng med læreplan (LK20)</h3>
+                <p>Kompetansemålene for 7. årstrinn bygger på følgende områder fra læreplanen:</p>
+                <ul>
+                    <li>Digitale ferdigheter som grunnleggende ferdighet i alle fag</li>
+                    <li>Teknologi og programmering i naturfag og matematikk</li>
+                    <li>Algoritmisk tenkning og problemløsning</li>
+                    <li>Kritisk kildebruk og digital dømmekraft</li>
+                    <li>Digital samhandling og kommunikasjon</li>
+                </ul>
+            </section>
+            
+            <section class="vurdering">
+                <h2>Vurdering av digital kompetanse</h2>
+                <p>Ved slutten av 7. årstrinn gjennomføres en grundig vurdering av elevenes digitale kompetanse som grunnlag for videre utvikling i ungdomsskolen. Vurderingen skjer gjennom:</p>
+                
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Praktiske prosjekter der elevene får demonstrere digital kompetanse i autentiske situasjoner</li>
+                    <li><i class="fas fa-check-circle"></i> Mappevurdering med eksempler på digitalt arbeid fra ulike fagområder</li>
+                    <li><i class="fas fa-check-circle"></i> Egenvurdering hvor elevene reflekterer over egen digital læring og kompetanseutvikling</li>
+                    <li><i class="fas fa-check-circle"></i> Kollegavurdering der elever gir hverandre konstruktive tilbakemeldinger på digitale produkter</li>
+                    <li><i class="fas fa-check-circle"></i> Samtaler mellom lærer og elev om digital kompetanse og videre utvikling</li>
+                </ul>
+                <p>Vurderingen skal dokumentere elevens kompetanse før overgang til ungdomsskolen og identifisere områder for videre utvikling.</p>
+            </section>
+            
+            <div class="navigation-buttons">
+                <a href="trinn4.html" class="button"><i class="fas fa-arrow-left"></i> 4. årstrinn</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kontakt</h3>
+                    <p><i class="fas fa-envelope"></i> post@kristiansund.kommune.no</p>
+                    <p><i class="fas fa-phone"></i> 71 57 40 00</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Lenker</h3>
+                    <ul>
+                        <li><a href="https://www.kristiansund.kommune.no/" target="_blank">Kristiansund kommune</a></li>
+                        <li><a href="https://www.udir.no/" target="_blank">Utdanningsdirektoratet</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Oppdatert</h3>
+                    <p>Sist oppdatert: <span id="last-updated">April 2023</span></p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Kristiansund kommune. Alle rettigheter reservert.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- Modal for mål -->
+    <div id="goalModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2></h2>
+            <div class="modal-body"></div>
+        </div>
+    </div>
+</body>
+</html> 

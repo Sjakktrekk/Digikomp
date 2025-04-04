@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progresjon - Digital kompetanseplan</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .tab-container {
+            margin-top: 20px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            padding: 10px 20px;
+            border: none;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            cursor: pointer;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .tab-button.active {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .competence-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .competence-table th {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-align: left;
+            padding: 15px;
+            font-weight: 600;
+        }
+
+        .competence-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--medium-gray);
+            vertical-align: top;
+        }
+
+        .competence-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .competence-table ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .competence-table li {
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .competence-table li:hover {
+            color: var(--secondary-color);
+        }
+
+        .competence-area {
+            width: 25%;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        .lk20-reference {
+            background-color: var(--light-gray);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+        }
+
+        .lk20-reference h3 {
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .competence-table, .competence-table tbody, .competence-table tr, .competence-table td {
+                display: block;
+                width: 100%;
+            }
+
+            .competence-table thead {
+                display: none;
+            }
+
+            .competence-table td {
+                padding: 10px 15px;
+            }
+
+            .competence-table td:before {
+                content: attr(data-title);
+                display: block;
+                font-weight: 500;
+                color: var(--secondary-color);
+                margin-bottom: 8px;
+            }
+
+            .competence-area {
+                background-color: var(--light-gray);
+                font-weight: 600;
+            }
+
+            .tab-buttons {
+                flex-direction: column;
+            }
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: var(--white);
+            margin: 5% auto;
+            padding: 30px;
+            width: 85%;
+            max-width: 700px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--text-color);
+            transition: color 0.3s ease;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        .close-modal:hover {
+            color: var(--secondary-color);
+        }
+
+        .modal-title {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 600;
+            padding-right: 40px;
+            line-height: 1.3;
+        }
+
+        .modal-description {
+            background-color: var(--light-gray);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .modal-resources {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 2px solid var(--medium-gray);
+        }
+
+        .modal-resources h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .modal-resources ul {
+            list-style-type: none;
+            padding-left: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .modal-resources li {
+            background-color: var(--light-gray);
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            font-weight: 500;
+        }
+
+        .modal-resources li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+                padding: 20px;
+            }
+
+            .modal-resources ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="progresjon">
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Kristiansund kommune logo" class="logo">
+            <h1>Digital kompetanseplan</h1>
+        </div>
+        <nav id="main-nav"></nav>
+        <button id="menu-toggle" class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <div class="container">
+                    <h2>Digitale ferdigheter etter årstrinn</h2>
+                    <p>Her finner du en oversikt over kompetansemålene som elevene skal oppnå innen utgangen av hvert hovedtrinn når det gjelder digital kompetanse. Velg årstrinn under for å se detaljert informasjon.</p>
+                </div>
+            </section>
+
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-button active" data-tab="trinn2">2. årstrinn</button>
+                    <button class="tab-button" data-tab="trinn4">4. årstrinn</button>
+                    <button class="tab-button" data-tab="trinn7">7. årstrinn</button>
+                </div>
+
+                <!-- 2. årstrinn -->
+                <div id="trinn2" class="tab-content active trinn2">
+                    <div class="year-header">
+                        <h2 class="year-title">2. årstrinn</h2>
+                        <div class="year-indicator"></div>
+                    </div>
+                    <p>Her finner du en oversikt over kompetansemålene som elevene skal oppnå innen utgangen av 2. årstrinn når det gjelder digital kompetanse. Disse målene er delt inn i fem hovedområder som til sammen dekker de ulike aspektene av elevenes digitale ferdigheter.</p>
+                    
+                    <table class="competence-table">
+                        <thead>
+                            <tr>
+                                <th>Elevens digitale kompetanse</th>
+                                <th>Mål for opplæringen</th>
+                                <th>Digitale ressurser</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse">Skape og produsere</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Lese inn setninger og enkle tekster</li>
+                                        <li>Skape et produkt som kombinerer bilde og tekst</li>
+                                        <li>Skape fortellinger ved hjelp av digitale verktøy</li>
+                                        <li>Skrive setninger og enkle tekster med tastatur og lydstøtte</li>
+                                        <li>Lytte til og samtale om autentiske språkmodeller</li>
+                                        <li>Ta bilde og video</li>
+                                        <li>Enkel redigering av bilde</li>
+                                        <li>Produsere et bilde ved hjelp av tegning på en digital app</li>
+                                        <li>Enkle søk på internett</li>
+                                        <li>Lagre digitale dokumenter med navn, som du senere kan finne tilbake til</li>
+                                        <li>Leke med musikkens grunnelementer og lage en enkel musikalsk komposisjon</li>
+                                        <li>Leke seg med enkel programmering ved hjelp av fysiske objekter eller blokkprogrammering</li>
+                                    </ul>
+                                </td>
+                                <td data-title="Digitale ressurser">
+                                    <ul>
+                                        <li>Book Creator</li>
+                                        <li>Scratch Jr.</li>
+                                        <li>Kidspiration</li>
+                                        <li>GarageBand</li>
+                                        <li>Microsoft Whiteboard</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse">Samhandle og kommunisere</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Dele digitalt arbeid med lærer</li>
+                                        <li>Finne digitalt arbeid fra lærer</li>
+                                        <li>Vise enkle digitale presentasjoner</li>
+                                        <li>Leke i digitale læringsspill sammen med andre</li>
+                                    </ul>
+                                </td>
+                                <td data-title="Digitale ressurser">
+                                    <ul>
+                                        <li>Teams</li>
+                                        <li>Showbie</li>
+                                        <li>Microsoft PowerPoint</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse">Kildebruk</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Spørre om lov før du tar bilde eller video av medelev eller andre</li>
+                                        <li>Referere muntlig til kilder ved søk (si hvor bildet er hentet fra)</li>
+                                        <li>Samtale om opphavsrett</li>
+                                    </ul>
+                                </td>
+                                <td data-title="Digitale ressurser">
+                                    <ul>
+                                        <li>Pixabay for barn</li>
+                                        <li>NRK Super</li>
+                                        <li>Salaby</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse">Digital livsmestring</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Huske eget brukernavn og passord</li>
+                                        <li>Logge inn og bruke digitale læremidler</li>
+                                        <li>Gjennomføre enkle søk i søkeprogram</li>
+                                        <li>Lese enkle digitale tekster</li>
+                                        <li>Behandle enheten på en trygg og god måte (iPad-regler)</li>
+                                        <li>Finne frem på iPaden sin (finne riktig app, mappe, oppgave, dokument og lekse)</li>
+                                    </ul>
+                                </td>
+                                <td data-title="Digitale ressurser">
+                                    <ul>
+                                        <li>Feide</li>
+                                        <li>Kiddle</li>
+                                        <li>Udir - dysleksivenning</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse">Digital bevissthet</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Samtale om hva vi bruker iPad til på skolen og hjemme</li>
+                                        <li>Bli kjent med å bruke ulike digitale verktøy for læring</li>
+                                    </ul>
+                                </td>
+                                <td data-title="Digitale ressurser">
+                                    <ul>
+                                        <li>Dubestemmer.no</li>
+                                        <li>Nettvettsregler for barn</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <section class="lk20-reference">
+                        <h3>Sammenheng med læreplan (LK20)</h3>
+                        <p>Kompetansemålene for 2. årstrinn bygger på følgende områder fra læreplanen:</p>
+                        <ul>
+                            <li>Grunnleggende digitale ferdigheter i norsk og matematikk</li>
+                            <li>Utforskning og læring gjennom lek med digitale verktøy</li>
+                            <li>Første møte med digitale ressurser og enkel digital produksjon</li>
+                        </ul>
+                    </section>
+                </div>
+
+                <!-- 4. årstrinn -->
+                <div id="trinn4" class="tab-content trinn4">
+                    <div class="year-header">
+                        <h2 class="year-title">4. årstrinn</h2>
+                        <div class="year-indicator"></div>
+                    </div>
+                    <p>Her finner du en oversikt over kompetansemålene som elevene skal oppnå innen utgangen av 4. årstrinn når det gjelder digital kompetanse. Disse målene videreutvikler ferdighetene fra 2. årstrinn og legger grunnlag for en dypere digital forståelse.</p>
+                    
+                    <table class="competence-table">
+                        <thead>
+                            <tr>
+                                <th>Elevens digitale kompetanse</th>
+                                <th>Mål for opplæringen</th>
+                                <th>Digitale ressurser</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse">Skape og produsere</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Lese inn tekster</li>
+                                        <li>Skrive tekster med tastatur</li>
+                                        <li>Utforske, lage og presentere faglig innhold ved bruk av ulike digitale ressurser</li>
+                                        <li>Kombinere ulike uttrykksformer i sammensatte tekster</li>
+                                        <li>Gjøre funksjonelle søk</li>
+                                        <li>Redigere tekst og bilder</li>
+                                        <li>Eksperimentere med rytmer, melodier og andre grunnelementer, og sette sammen mønstre til komposisjoner</li>
+                                        <li>Bruke digitale ressurser til å utforske språket og utøve med andre</li>
+                                        <li>Enkel programmering ved bruk av variabler, vilkår og løkker</li>
+                                    </ul>
+                                </td>
+                                <td data-title="Digitale ressurser">
+                                    <ul>
+                                        <li>Book Creator</li>
+                                        <li>Scratch</li>
+                                        <li>Microsoft 365 (Word, PowerPoint)</li>
+                                        <li>GarageBand</li>
+                                        <li>Adobe Spark</li>
+                                        <li>Canva</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse">Samhandle og kommunisere</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Dele digitalt arbeid med medelever og lærer</li>
+                                        <li>Presentere digitalt</li>
+                                        <li>Samtale om og øve på hvordan man kommuniserer på chatter, meldinger og sosiale medier (kritisk tenkning)</li>
+                                        <li>Delta i en digital samtale med lærer inkludert</li>
+                                        <li>Samarbeide i digitale læringsspill</li>
+                                    </ul>
+                                </td>
+                                <td data-title="Digitale ressurser">
+                                    <ul>
+                                        <li>Teams</li>
+                                        <li>Showbie</li>
+                                        <li>OneNote</li>
+                                        <li>Google Classroom</li>
+                                        <li>Padlet</li>
+                                        <li>Flip</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse">Kildebruk</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Søke etter informasjon i ulike kilder og vurdere hvor nyttig informasjonen er</li>
+                                        <li>Samtale om regler og normer for opphavsrett</li>
+                                        <li>Samtale om deling og beskyttelse av informasjon</li>
+                                        <li>Bruke bilder med Creative Commons-lisens</li>
+                                        <li>Bruke nettsteder med lovlige bilder</li>
+                                    </ul>
+                                </td>
+                                <td data-title="Digitale ressurser">
+                                    <ul>
+                                        <li>Kildekritikk.no</li>
+                                        <li>Pixabay for barn</li>
+                                        <li>NRK Skole</li>
+                                        <li>Salaby</li>
+                                        <li>CreativeCommons-søk</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse">Digital livsmestring</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Samtale om regler og normer for personvern, deling og beskyttelse av informasjon og om hva det vil si å bruke dømmekraft i digital samhandling</li>
+                                        <li>Samtale om digital livsmestring i sosiale medier</li>
+                                        <li>Samtale om aldersgrenser</li>
+                                        <li>Samtale om og øve på "god oppførsel" på nett</li>
+                                        <li>Lese digitale sammensatte tekster</li>
+                                        <li>Bruke tale til tekst på iPaden (dikter-funksjon) ved behov</li>
+                                        <li>Kjenne til les opp-funksjonen i apper og engasjerende leser i Office</li>
+                                    </ul>
+                                </td>
+                                <td data-title="Digitale ressurser">
+                                    <ul>
+                                        <li>Dubestemmer.no</li>
+                                        <li>Nettvett.no</li>
+                                        <li>Barnevakten.no</li>
+                                        <li>Feide</li>
+                                        <li>Kiddle</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse">Digital bevissthet</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Samtale om hva det vil si å bruke dømmekraft i digital samhandling</li>
+                                        <li>Bruke ulike digitale verktøy for læring</li>
+                                        <li>Samtale om hva sosiale medier er, og hva disse kan brukes til</li>
+                                        <li>Samtale om hva og hvor mye vi bruker digitale enheter på skolen og hjemme</li>
+                                    </ul>
+                                </td>
+                                <td data-title="Digitale ressurser">
+                                    <ul>
+                                        <li>Dubestemmer.no</li>
+                                        <li>Medietilsynet - Barn og medier</li>
+                                        <li>Nettvettsregler for barn</li>
+                                        <li>Redd Barna - Nettvett</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <section class="lk20-reference">
+                        <h3>Sammenheng med læreplan (LK20)</h3>
+                        <p>Kompetansemålene for 4. årstrinn bygger på følgende områder fra læreplanen:</p>
+                        <ul>
+                            <li>Bruk av digitale verktøy i skapende arbeid og problemløsning</li>
+                            <li>Innhenting av informasjon og kritisk vurdering av kilder</li>
+                            <li>Digital kommunikasjon og samhandling</li>
+                            <li>Medborgerskap og personvern i digital kontekst</li>
+                        </ul>
+                    </section>
+                </div>
+
+                <!-- 7. årstrinn -->
+                <div id="trinn7" class="tab-content trinn7">
+                    <div class="year-header">
+                        <h2 class="year-title">7. årstrinn</h2>
+                        <div class="year-indicator"></div>
+                    </div>
+                    <p>Her finner du en oversikt over kompetansemålene som elevene skal oppnå innen utgangen av 7. årstrinn når det gjelder digital kompetanse. Disse målene bygger på kompetanse fra tidligere årstrinn og forbereder elevene på mer avansert digital læring i ungdomsskolen.</p>
+                    
+                    <table class="competence-table">
+                        <thead>
+                            <tr>
+                                <th>Elevens digitale kompetanse</th>
+                                <th>Mål for opplæringen</th>
+                                <th>Digitale ressurser</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse">Skape og produsere</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Beherske touch-metoden</li>
+                                        <li>Utforske, lage og presentere faglig innhold ved bruk av ulike digitale ressurser</li>
+                                        <li>Lage sammensatte tekster (tekst, lyd, bilde, video) og publisere og dele dem digitalt</li>
+                                        <li>Bruke programmering til å skape spill og interaktive fortellinger</li>
+                                        <li>Designe og lage digitale spill og animasjoner med ulike figurer og betingelser</li>
+                                        <li>Lage egne databaser og strukturere informasjon i dem</li>
+                                        <li>Utforske teknologiske systemer, forklare og beskrive hvordan de virker</li>
+                                        <li>Bruke regneark til å organisere og presentere data</li>
+                                        <li>Bruke digitale verktøy for å visualisere og simulere faglig innhold</li>
+                                    </ul>
+                                </td>
+                                <td data-title="Digitale ressurser">
+                                    <ul>
+                                        <li>Microsoft 365 (Word, PowerPoint, Excel)</li>
+                                        <li>Google Workspace</li>
+                                        <li>Scratch</li>
+                                        <li>Micro:bit</li>
+                                        <li>GeoGebra</li>
+                                        <li>Canva</li>
+                                        <li>iMovie/WeVideo</li>
+                                        <li>Adobe Express</li>
+                                        <li>StopMotion</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse">Samhandle og kommunisere</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Samarbeide digitalt om alle deler av en arbeidsprosess</li>
+                                        <li>Planlegge og gjennomføre digitale presentasjoner for ulike målgrupper</li>
+                                        <li>Reflektere over og diskutere hvordan kommunikasjon påvirkes av digital teknologi</li>
+                                        <li>Formulere og etterprøve problemstillinger ved bruk av digitale verktøy og samarbeidsplattformer</li>
+                                        <li>Vite hvordan digital kommunikasjon påvirker relasjoner og identitet</li>
+                                        <li>Diskutere konsekvenser av digital mobbing og deling på nett</li>
+                                    </ul>
+                                </td>
+                                <td data-title="Digitale ressurser">
+                                    <ul>
+                                        <li>Teams</li>
+                                        <li>OneNote</li>
+                                        <li>Google Classroom</li>
+                                        <li>Padlet</li>
+                                        <li>Flip</li>
+                                        <li>Mentimeter</li>
+                                        <li>Wakelet</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse">Kildebruk</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Vurdere kilders troverdighet og relevans og velge kilder på en reflektert måte</li>
+                                        <li>Oppgi kilder etter gjeldende regler</li>
+                                        <li>Forklare hvordan algoritmer påvirker informasjonen vi får på nett</li>
+                                        <li>Diskutere hva opphavsrett og personvern betyr i digital sammenheng</li>
+                                        <li>Skille mellom fakta, meninger og kommersielt innhold på nett</li>
+                                        <li>Gjenkjenne falske nyheter og manipulert innhold</li>
+                                    </ul>
+                                </td>
+                                <td data-title="Digitale ressurser">
+                                    <ul>
+                                        <li>Kildekritikk.no</li>
+                                        <li>Faktisk.no</li>
+                                        <li>NRK Skole</li>
+                                        <li>Medietilsynet</li>
+                                        <li>Kildekompasset</li>
+                                        <li>Wikipedia - Kildekriterier</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse">Digital livsmestring</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Vurdere risiko og håndtere identitet og privatliv i digitale medier</li>
+                                        <li>Diskutere fordeler og utfordringer ved digital kommunikasjon</li>
+                                        <li>Reflektere over egen og andres digitale identitet</li>
+                                        <li>Forstå konsekvenser av digitale fotavtrykk</li>
+                                        <li>Analysere virkningen av dataspill og sosiale medier på identitet, relasjoner og livsstil</li>
+                                        <li>Bruke digitale ressurser på en kritisk måte som fremmer egen læring</li>
+                                        <li>Utvikle strategier for håndtering av digital informasjonsstrøm</li>
+                                    </ul>
+                                </td>
+                                <td data-title="Digitale ressurser">
+                                    <ul>
+                                        <li>Dubestemmer.no</li>
+                                        <li>Nettvett.no</li>
+                                        <li>Slettmeg.no</li>
+                                        <li>Redd Barna - Nettvett</li>
+                                        <li>Barneombudet</li>
+                                        <li>Ung.no</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse">Digital bevissthet</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Diskutere hvordan teknologi påvirker samfunnet og hverdagen</li>
+                                        <li>Reflektere over algoritmer og hvordan de påvirker informasjonen vi får</li>
+                                        <li>Diskutere hvordan kunstig intelligens og KI-verktøy fungerer og hvilket potensial de har</li>
+                                        <li>Reflektere over digitale fotavtrykk og konsekvensene av disse</li>
+                                        <li>Vurdere sammenhengen mellom skjermtid og fysisk og psykisk helse</li>
+                                        <li>Analysere hvordan reklame og kommersielt innhold påvirker oss på nettet</li>
+                                        <li>Diskutere etiske problemstillinger knyttet til bruk av teknologi</li>
+                                    </ul>
+                                </td>
+                                <td data-title="Digitale ressurser">
+                                    <ul>
+                                        <li>Datatilsynet - Personvern i skolen</li>
+                                        <li>Medietilsynet - Barn og medier</li>
+                                        <li>AI for Kids - ressurser</li>
+                                        <li>ChatGPT for barn (med veiledning)</li>
+                                        <li>Teknologirådet - ressurser</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <section class="lk20-reference">
+                        <h3>Sammenheng med læreplan (LK20)</h3>
+                        <p>Kompetansemålene for 7. årstrinn bygger på følgende områder fra læreplanen:</p>
+                        <ul>
+                            <li>Digitale ferdigheter som grunnleggende ferdighet i alle fag</li>
+                            <li>Teknologi og programmering i naturfag og matematikk</li>
+                            <li>Algoritmisk tenkning og problemløsning</li>
+                            <li>Kritisk kildebruk og digital dømmekraft</li>
+                            <li>Digital samhandling og kommunikasjon</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kontakt</h3>
+                    <p><i class="fas fa-envelope"></i> post@kristiansund.kommune.no</p>
+                    <p><i class="fas fa-phone"></i> 71 57 40 00</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Lenker</h3>
+                    <ul>
+                        <li><a href="https://www.kristiansund.kommune.no/" target="_blank">Kristiansund kommune</a></li>
+                        <li><a href="https://www.udir.no/" target="_blank">Utdanningsdirektoratet</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Oppdatert</h3>
+                    <p>Sist oppdatert: <span id="last-updated">April 2023</span></p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Kristiansund kommune. Alle rettigheter reservert.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="navigation.js"></script>
+
+    <!-- Modal -->
+    <div id="goalModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <div id="modalDescription"></div>
+            <div class="modal-resources">
+                <h3>Tilgjengelige ressurser:</h3>
+                <ul id="modalResources"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('goalModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalResources = document.getElementById('modalResources');
+        const closeModal = document.querySelector('.close-modal');
+        const body = document.body;
+
+        // Make all competence goals clickable
+        document.querySelectorAll('.competence-table li').forEach(goal => {
+            goal.addEventListener('click', () => {
+                const goalText = goal.textContent;
+                const resources = goal.closest('tr').querySelector('td:last-child ul').innerHTML;
+                
+                modalTitle.textContent = goalText;
+                modalDescription.innerHTML = `<p>Her kommer detaljert informasjon om hvordan man kan nå målet: ${goalText}</p>`;
+                modalResources.innerHTML = resources;
+                
+                modal.style.display = 'block';
+                body.style.overflow = 'hidden'; // Forhindrer scrolling i bakgrunnen
+            });
+        });
+
+        // Funksjon for å lukke modalen
+        function closeModalFunction() {
+            modal.style.display = 'none';
+            body.style.overflow = 'auto'; // Gjenoppretter scrolling
+        }
+
+        // Close modal when clicking the X
+        closeModal.addEventListener('click', closeModalFunction);
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModalFunction();
+            }
+        });
+
+        // Close modal when pressing Escape key
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && modal.style.display === 'block') {
+                closeModalFunction();
+            }
+        });
+    </script>
+</body>
+</html> 
