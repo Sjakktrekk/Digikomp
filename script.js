@@ -143,6 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('goalModal');
     if (modal) {
         const modalContent = modal.querySelector('.modal-content');
+        const modalTitle = modal.querySelector('h2');
         const modalBody = modal.querySelector('.modal-body');
         const closeButton = modal.querySelector('.modal-close');
 
@@ -155,15 +156,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 const competenceKey = competenceArea.toLowerCase().replace(/\s+/g, '-');
                 
                 // Vis modal
-                modal.classList.add('active');
+                modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
+
+                // Legg til innhold i modalen basert på valgt mål
+                if (goal.textContent === 'Lese inn setninger og enkle tekster') {
+                    modalTitle.textContent = 'Lese inn setninger og enkle tekster';
+                    modalBody.innerHTML = `
+                        <div class="modal-section">
+                            <h3>Hva:</h3>
+                            <p>Elevene trener på leseflyt, uttale og trygghet i høytlesing.</p>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Hvordan:</h3>
+                            <ul>
+                                <li>La elevene lese inn setninger/tekster de selv har skrevet, eller korte tekster fra leseboka.</li>
+                                <li>Spill inn på nettbrett eller PC og lytt sammen i grupper</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Tilgjengelige ressurser:</h3>
+                            <ul>
+                                <li>Showbie</li>
+                                <li>Microsoft Teams</li>
+                            </ul>
+                        </div>
+                    `;
+                }
             });
         });
 
         // Lukk modal når man klikker på lukkeknappen
         if (closeButton) {
             closeButton.addEventListener('click', () => {
-                modal.classList.remove('active');
+                modal.style.display = 'none';
                 document.body.style.overflow = '';
             });
         }
@@ -171,15 +197,15 @@ document.addEventListener('DOMContentLoaded', function() {
         // Lukk modal når man klikker utenfor
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
-                modal.classList.remove('active');
+                modal.style.display = 'none';
                 document.body.style.overflow = '';
             }
         });
 
         // Lukk modal med Escape-tasten
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                modal.classList.remove('active');
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
                 document.body.style.overflow = '';
             }
         });

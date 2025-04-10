@@ -766,14 +766,2659 @@
         document.querySelectorAll('.competence-table li').forEach(goal => {
             goal.addEventListener('click', () => {
                 const goalText = goal.textContent;
-                const resources = goal.closest('tr').querySelector('td:last-child ul').innerHTML;
                 
                 modalTitle.textContent = goalText;
+                
+                // Spesiell håndtering for mål i 2. årstrinn
+                if (goal.closest('.trinn2')) {
+                    switch(goalText) {
+                        case 'Lese inn setninger og enkle tekster':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal kunne lese inn korte tekster eller setninger digitalt, f.eks. ved å bruke et nettbrett, PC eller mobil. Målet handler om å uttrykke seg muntlig gjennom teknologi, og styrke både leseflyt og digital kompetanse.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å øve på flyt og uttale i egen lesing</li>
+                                        <li>Å bruke mikrofonfunksjoner og lydopptak på digitale enheter</li>
+                                        <li>Å lytte til og vurdere egen innlesing</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Les inn en bildebok eller enkle tekster de har skrevet selv</li>
+                                        <li>Spill inn "dagens tekst" og send til læreren</li>
+                                        <li>Lag en "lydbok" der de leser inn en favorittside fra en bok</li>
+                                        <li>Bruk innlesing som del av vurdering i lesing</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Lærer lytter til opptak og vurderer leseflyt og uttale</li>
+                                        <li>Elevene sammenligner opptak fra starten og slutten av året</li>
+                                        <li>Elever får gi hverandre enkel respons: "Hva leste du godt?"</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Seesaw - barnevennlig verktøy for innspilling</li>
+                                <li>Book Creator - for innlesing til tekst eller bilder</li>
+                                <li>GarageBand - for mer avansert lydopptak</li>
+                                <li>Lydopptaker på nettbrett/mobil</li>
+                            `;
+                            break;
+                        case 'Skape et produkt som kombinerer bilde og tekst':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal kunne lage et enkelt digitalt produkt der de selv setter sammen tekst og bilde for å formidle et budskap. Produktet kan være en fortelling, faktaside, bokomtale, digital plakat, dagbokinnlegg eller lignende. Målet handler både om å bruke enkle digitale verktøy og å uttrykke seg kreativt og meningsfullt.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å velge passende bilder til en tekst (eller omvendt)</li>
+                                        <li>Å bruke enkle verktøy til å sette inn bilde og tekst i et dokument/app</li>
+                                        <li>Å uttrykke seg digitalt med egne ord og bilder</li>
+                                        <li>Å formidle noe visuelt og språklig til en mottaker</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Lag en digital faktaside (om et dyr, en person, en årstid eller en gjenstand)</li>
+                                        <li>Digital bokomtale med bilde av bokforsiden og 1-2 setninger</li>
+                                        <li>Mitt favorittsted med bilde og beskrivelse</li>
+                                        <li>Digital dagbok med ukentlige innlegg</li>
+                                        <li>Lag et eventyrhefte med bilder og tekst</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Tips til læreren</h3>
+                                    <ul>
+                                        <li>Start med å vise eksempler og modeller</li>
+                                        <li>La elevene bruke egne bilder de har tatt eller tegnet</li>
+                                        <li>Bruk oppgaven tverrfaglig</li>
+                                        <li>Gi støtteord eller setningsstartere for de som strever med å skrive</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Book Creator - barnevennlig app for å kombinere bilde, tekst og lyd</li>
+                                <li>Seesaw - for innlegging av bilde, tekst og digital innlevering</li>
+                                <li>Microsoft Word eller Google Dokumenter - for enkel tekst med bilder</li>
+                                <li>Pages (iPad) - for digitale plakater og presentasjoner</li>
+                                <li>Paint / Paint 3D + Word - for tegning og tekstkombinasjon</li>
+                            `;
+                            break;
+                        case 'Skape fortellinger ved hjelp av digitale verktøy':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal kunne lage en enkel fortelling digitalt – enten med bilder og tekst, tale og tegninger eller ved å lage en animasjon eller bok.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å bruke fantasi og skape historier med digitale hjelpemidler</li>
+                                        <li>Å strukturere fortellinger (start–midt–slutt)</li>
+                                        <li>Å kombinere visuelle og språklige uttrykk</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Lag en eventyrbok i Book Creator</li>
+                                        <li>Bruk Puppet Pals eller ChatterPix for å lage "snakkende figurer"</li>
+                                        <li>Lag en digital tegneserie</li>
+                                        <li>Bruk Lego og ta bilder + tekst til en digital "film"</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Vurder struktur: har fortellingen begynnelse, midtdel og slutt?</li>
+                                        <li>Vurder kreativitet og bruk av verktøy</li>
+                                        <li>Elevfremvisning med refleksjon: Hva handler fortellingen om?</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Book Creator - for å lage digitale bøker</li>
+                                <li>Puppet Pals - for å lage snakkende figurer</li>
+                                <li>ChatterPix Kids - for å lage animerte figurer</li>
+                                <li>Toontastic - for å lage animerte fortellinger</li>
+                                <li>iMovie - for enkle filmsekvenser</li>
+                                <li>Seesaw - for digital dokumentasjon</li>
+                            `;
+                            break;
+                        case 'Skrive setninger og enkle tekster med tastatur og lydstøtte':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal kunne bruke tastatur og eventuelt lydstøtte (tale-til-tekst) for å skrive korte tekster eller setninger digitalt.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å bruke tastatur til å skrive enkle tekster</li>
+                                        <li>Å bruke teknologi til hjelp i skriving (f.eks. diktering)</li>
+                                        <li>Å uttrykke egne tanker skriftlig med digitale hjelpemidler</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Skriv enkle dagboksider på iPad eller PC</li>
+                                        <li>Bruk dikteringsfunksjon (f.eks. i Google Docs) til å lage setninger</li>
+                                        <li>Lag digitale bildefortellinger med tekst og lyd</li>
+                                        <li>Skriv faktasetninger etter å ha jobbet med et tema (dyr, vær osv.)</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Sjekk om elevene klarer å bruke tastatur og skrive sammenhengende setninger</li>
+                                        <li>Samtale om skriveopplevelsen: Hva var lett/vanskelig?</li>
+                                        <li>Vurder både innhold og hvordan verktøyene brukes</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Google Dokumenter (med dikteringsfunksjon)</li>
+                                <li>Book Creator</li>
+                                <li>Seesaw</li>
+                                <li>Word på iPad/PC</li>
+                                <li>Tale-til-tekst-verktøy på iPad eller Chromebook</li>
+                            `;
+                            break;
+                        case 'Lytte til og samtale om autentiske språkmodeller':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal eksponeres for ekte språkbruk – for eksempel ved å høre barn og voksne snakke, lese eller fortelle – gjennom digitale ressurser. Målet handler om å utvikle språkforståelse, uttale og lytting.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å forstå og lytte til naturlig språk</li>
+                                        <li>Å utvikle lytteferdigheter og ordforråd</li>
+                                        <li>Å samtale om det de har hørt</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Hør på lydbøker og snakk om handlingen</li>
+                                        <li>Se korte filmer eller animasjoner med fortellerstemme</li>
+                                        <li>Hør på podkaster for barn og samtal etterpå</li>
+                                        <li>Bruk språk-apper med autentisk uttale (f.eks. på engelsk)</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Samtale i gruppe: Hva handlet det om? Hva husker du?</li>
+                                        <li>Eleven gjenforteller eller dramatiserer det de har hørt</li>
+                                        <li>Bruk samtalebilder med spørsmål knyttet til lydkilden</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>NRK Super (lydbøker og videoer)</li>
+                                <li>Polylino (digitale bøker på mange språk)</li>
+                                <li>Storyline Online / YouTube Kids</li>
+                                <li>Lingokids (engelsk)</li>
+                                <li>Lytteopptak laget av lærer eller andre elever</li>
+                            `;
+                            break;
+                        case 'Ta bilde og video':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal kunne bruke digitale enheter til å ta bilder og enkle videoer, og forstå forskjellen på dem. Det handler også om å kunne bruke kamera på en hensiktsmessig måte.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å bruke kamerafunksjonen på nettbrett eller PC</li>
+                                        <li>Å ta klare og relevante bilder</li>
+                                        <li>Å dokumentere opplevelser digitalt</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Dokumentere turer eller eksperiment med bilder/video</li>
+                                        <li>Lage "min dag på skolen" i bilder</li>
+                                        <li>Ta bilder av eget arbeid og forklare med stemme</li>
+                                        <li>Lage video av noe de lager eller forteller om</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Snakk med eleven: Hvorfor valgte du dette bildet?</li>
+                                        <li>Se på om bildet/videoen viser det den skal</li>
+                                        <li>Enkel logg eller fremvisning: "Dette tok jeg bilde av fordi…"</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>iPad/Chromebook kamera</li>
+                                <li>Seesaw</li>
+                                <li>Book Creator</li>
+                                <li>iMovie (enkel bruk)</li>
+                                <li>Pic Collage Kids</li>
+                            `;
+                            break;
+                        case 'Enkel redigering av bilde':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal lære å gjøre enkle justeringer av bilder, for eksempel beskjæring, tegning på bilde eller legge til klistremerker eller tekst.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å bruke redigeringsverktøy i en enkel app</li>
+                                        <li>Å gjøre bevisste valg om hva bildet skal vise</li>
+                                        <li>Å pynte/redigere uten å miste hovedinnholdet</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Ta et bilde og legg på tekst og ramme</li>
+                                        <li>Tegn på et bilde for å understreke detaljer</li>
+                                        <li>Bruk emoji/klistremerker for å fortelle følelser eller reaksjon</li>
+                                        <li>Beskjær bort det som ikke er viktig</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Snakk med eleven: Hva gjorde du med bildet?</li>
+                                        <li>Er bildet tydelig og redigeringen hensiktsmessig?</li>
+                                        <li>Elev viser før- og etterbilde</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Pic Collage Kids</li>
+                                <li>Seesaw (har tegne- og redigeringsmuligheter)</li>
+                                <li>Book Creator</li>
+                                <li>Photos (iPad/Chromebook) – for enkel beskjæring og filter</li>
+                                <li>Markup-verktøy på bilder i iPad</li>
+                            `;
+                            break;
+                        case 'Produsere et bilde ved hjelp av tegning på en digital app':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal lage egne bilder digitalt, ved å tegne på nettbrett eller PC. Det kan være illustrasjoner, kunst eller tegninger knyttet til et tema.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å uttrykke seg visuelt med digitale verktøy</li>
+                                        <li>Å utforske former, farger og digitale tegneverktøy</li>
+                                        <li>Å kombinere tegning med kreativ tenking</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Tegn deg selv eller familien i en tegneapp</li>
+                                        <li>Illustrer et eventyr eller en faktatekst</li>
+                                        <li>Lag digitale mønstre eller fargerike kunstverk</li>
+                                        <li>Tegn drømmedyret ditt og beskriv det</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Eleven forklarer tegningen sin muntlig eller skriftlig</li>
+                                        <li>Vurder bruk av farger, former og kreativitet</li>
+                                        <li>Enkel fremvisning til gruppe eller klasse</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Tayasui Sketches School (iPad)</li>
+                                <li>Paint eller Paint 3D</li>
+                                <li>Draw and Tell HD (enkel for 1.–2. trinn)</li>
+                                <li>Whiteboard-apper</li>
+                                <li>Kunststudio i Book Creator eller Seesaw</li>
+                            `;
+                            break;
+                        case 'Enkle søk på internett':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal kunne søke etter informasjon eller bilder på internett ved hjelp av enkle søkeord og under veiledning. Det handler om å bruke nettet som kilde på en trygg og hensiktsmessig måte.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å bruke søkemotorer med enkle ord</li>
+                                        <li>Å finne relevante bilder eller informasjon</li>
+                                        <li>Å utvikle en forståelse for hvordan man søker trygt</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Søk etter bilder til et tema: f.eks. "katt", "regnskog"</li>
+                                        <li>Finn fakta om et dyr de jobber med i naturfag</li>
+                                        <li>Finn ut hvordan man lager noe: f.eks. "lage papirfly"</li>
+                                        <li>Samtale om hvilke resultater som kommer opp</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Observasjon: Hvordan søker eleven?</li>
+                                        <li>Elev viser hva de har funnet og forklarer hvordan</li>
+                                        <li>Samtale om gode søkeord og hva som er en trygg nettside</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Kiddle (barnesikker søkemotor)</li>
+                                <li>Google/Bing med SafeSearch på</li>
+                                <li>Polylino fakta (søk etter tema)</li>
+                                <li>Book Creator / Seesaw – for å bruke funn i produkt</li>
+                            `;
+                            break;
+                        case 'Lagre digitale dokumenter med navn, som du senere kan finne tilbake til':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Eleven skal lære å gi dokumenter egne navn og vite hvordan man finner dem igjen senere. Det handler om enkel organisering og eierskap til eget digitalt arbeid.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å lagre filer med forståelige navn</li>
+                                        <li>Å navigere i mapper på nettbrett eller datamaskin</li>
+                                        <li>Å finne igjen egne arbeider</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Lag en digital bok og lagre den som "Min bok om meg"</li>
+                                        <li>Lagre en tegning som "Tegning regnvær"</li>
+                                        <li>Jobb med mappe-struktur: "Norsk", "Naturfag"</li>
+                                        <li>Øv på å åpne og fortsette på tidligere arbeid</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Spør eleven: "Hva heter filen din?" – og la dem finne den</li>
+                                        <li>Lag en enkel "digital skattejakt" i elevens mappe</li>
+                                        <li>Loggføring: Hva lagret du i dag, og hvor?</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Google Disk/Drive (med barnevennlig visning)</li>
+                                <li>iPad-mapper og Bilder</li>
+                                <li>Book Creator / Seesaw</li>
+                                <li>OneDrive / Teams-oppgaver</li>
+                            `;
+                            break;
+                        case 'Leke med musikkens grunnelementer og lage en enkel musikalsk komposisjon':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Eleven skal få prøve seg på å lage musikk digitalt og leke med rytme, lyd og melodi. Målet er å uttrykke seg musikalsk med enkle verktøy.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å kombinere lyder og rytmer digitalt</li>
+                                        <li>Å bruke digitale verktøy for å lage musikk</li>
+                                        <li>Å utvikle musisk kreativitet og uttrykk</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Lage rytmer med trommelyder eller bodyperkusjon</li>
+                                        <li>Sette sammen lyder i et musikkprogram</li>
+                                        <li>Eksperimentere med tempo, volum og instrumenter</li>
+                                        <li>Lage en "stemningskomposisjon": glad, trist, spennende</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>La eleven fremføre musikken for en gruppe</li>
+                                        <li>Samtale: Hvordan lagde du musikken din?</li>
+                                        <li>Enkelt skjema: Hva brukte du? Hvordan ble det?</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Chrome Music Lab (super for 1.–4. trinn)</li>
+                                <li>Incredibox (lek med beatboxing og lydeffekter)</li>
+                                <li>GarageBand (iPad) – om tilgjengelig</li>
+                                <li>Groove Pizza – rytmebygging</li>
+                                <li>BandLab for Education</li>
+                            `;
+                            break;
+                        case 'Leke seg med enkel programmering ved hjelp av fysiske objekter eller blokkprogrammering':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Eleven skal få utforske grunnleggende programmering gjennom konkrete verktøy som roboter eller enkle programmer. Det skal være lekende og utforskende.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å følge og lage enkle algoritmer</li>
+                                        <li>Å forstå begrep som rekkefølge, løkke og retning</li>
+                                        <li>Å teste og feile på en kreativ måte</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Bruk Blue-Bot eller Bee-Bot til å følge ruter på gulvet</li>
+                                        <li>Bruk Osmo Coding til å løse oppgaver med kodeklosser</li>
+                                        <li>Bruk ScratchJr til å lage enkle historier med kode</li>
+                                        <li>Kode en Micro:bit til å vise et hjerte eller tall</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Eleven forklarer hva koden gjør</li>
+                                        <li>Logg eller video av hvordan de løste en kodeoppgave</li>
+                                        <li>Se på om koden fungerer som ønsket – og hvordan de løste feil</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Blue-Bot / Bee-Bot</li>
+                                <li>Osmo Coding (iPad)</li>
+                                <li>ScratchJr (iPad/Chromebook)</li>
+                                <li>Micro:bit (med MakeCode)</li>
+                                <li>Kodable, Lightbot, Tynker</li>
+                            `;
+                            break;
+                        case 'Dele digitalt arbeid med lærer':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Eleven skal kunne levere inn eller sende digitalt arbeid til læreren, enten det er en tegning, tekst, bilde eller en lydfil. Dette handler både om tekniske ferdigheter og om å vise fram eget arbeid.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å forstå hvordan man leverer digitalt arbeid</li>
+                                        <li>Å bruke enkle delingsfunksjoner (f.eks. trykke på "del", "lever" eller "send")</li>
+                                        <li>Å utvikle digital ansvarlighet og eierskap</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Etter å ha laget en tegning i Book Creator, trykker eleven "Del" og sender til lærer</li>
+                                        <li>Eleven fullfører en lydinnspilling og leverer via Seesaw eller Teams</li>
+                                        <li>Ta bilde av en fysisk tegning og sende det til lærer</li>
+                                        <li>Levere enkle oppgaver i en læringsplattform</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Observasjon: Hvordan eleven leverer</li>
+                                        <li>Eleven forklarer hva de har levert og hvordan</li>
+                                        <li>Systematisk gjennomgang av elevenes digitale mapper</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Seesaw (enkel innlevering med ett trykk)</li>
+                                <li>Teams (med innleveringsfunksjon)</li>
+                                <li>Google Classroom (om aktuelt)</li>
+                                <li>Book Creator – del som link eller PDF</li>
+                                <li>Showbie / Skooler / Itslearning – hvis skolen bruker dette</li>
+                            `;
+                            break;
+                        case 'Finne digitalt arbeid fra lærer':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Eleven skal kunne finne igjen oppgaver, beskjeder eller innhold læreren har delt med dem digitalt. Det handler om å kunne orientere seg i enkle læringsplattformer eller apper.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å kjenne igjen ikoner og symboler som "innboks", "oppgaver" eller "meldinger"</li>
+                                        <li>Å navigere i apper og finne beskjeder eller oppgaver</li>
+                                        <li>Å bli mer selvstendig i digital arbeidsflyt</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>"Skattejakt": Finn meldingen fra læreren i Seesaw</li>
+                                        <li>Åpne en tildelt oppgave i Teams eller Showbie</li>
+                                        <li>Trykke på "Mitt arbeid" eller lignende i læringsappen</li>
+                                        <li>Sjekke dagens beskjed fra læreren og gjøre noe ut fra den</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Læreren kan gi enkle instruksjoner: "Finn oppgaven som heter 'Min bok'"</li>
+                                        <li>Elevsamtale: "Hva er det første du gjør når du åpner appen?"</li>
+                                        <li>Observasjon: Hvor selvstendig eleven er</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Seesaw – oppgaver og meldinger fra lærer</li>
+                                <li>Teams – "Oppgaver"-funksjonen</li>
+                                <li>Google Classroom</li>
+                                <li>Skooler / Showbie / Itslearning</li>
+                                <li>Smartbok / Salaby / Kikora – lærerdelt innhold</li>
+                            `;
+                            break;
+                        case 'Vise enkle digitale presentasjoner':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal kunne vise fram noe de har laget digitalt, som for eksempel en tegning med forklaring, en digital bok eller en presentasjon med bilder og tekst.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å presentere egne digitale arbeider</li>
+                                        <li>Å bruke digitale verktøy til å uttrykke seg</li>
+                                        <li>Å lytte til andre og være stolte av egen innsats</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Vise sin Book Creator-bok til klassen</li>
+                                        <li>Dele skjerm og vise en tegning og fortelle om den</li>
+                                        <li>Lage en "Min uke"-presentasjon med bilder og tale</li>
+                                        <li>Vise en digital historie i ScratchJr</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Lytte til elevenes forklaring: Hva viser de? Hvorfor valgte de det?</li>
+                                        <li>Observasjon: Kan de finne og vise fram produktet sitt?</li>
+                                        <li>En-til-en-presentasjon eller gruppevisning</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Book Creator</li>
+                                <li>Seesaw (spille inn seg selv og vise fram arbeidet)</li>
+                                <li>PowerPoint / Keynote – svært enkel variant</li>
+                                <li>ScratchJr – vis animasjon</li>
+                                <li>Explain Everything – for de litt viderekomne</li>
+                            `;
+                            break;
+                        case 'Leke i digitale læringsspill sammen med andre':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal kunne bruke digitale spill som kombinerer lek og læring, og samtidig samarbeide eller spille sammen med andre elever.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å kommunisere og samarbeide digitalt</li>
+                                        <li>Å bruke spill til å trene faglige ferdigheter</li>
+                                        <li>Å utvikle sosiale ferdigheter i digitale miljøer</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Spill memory eller samarbeidsoppgaver i Salaby</li>
+                                        <li>Spille matematikkspill i par og diskutere løsningene</li>
+                                        <li>Samarbeid i Minecraft Education: bygg et dyr, en verden eller et hjem</li>
+                                        <li>Jobbe sammen med Blue-Bot: én styrer, én programmerer</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Observasjon: Samarbeider eleven godt?</li>
+                                        <li>Elevsamtale: Hva lærte dere sammen i spillet?</li>
+                                        <li>Bruk av "spill-logg" – hva spilte vi, og hva lærte vi?</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Salaby (spill i norsk, matte, engelsk osv.)</li>
+                                <li>Kikora (enkel matte)</li>
+                                <li>Minecraft Education Edition</li>
+                                <li>Kodable / Lightbot – programmeringsspill</li>
+                                <li>NRK Super Skole-spill</li>
+                            `;
+                            break;
+                        case 'Spørre om lov før du tar bilde eller video av medelev eller andre':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Eleven skal forstå at man må ha tillatelse fra andre før man tar bilde eller video av dem, og at dette handler om respekt og personvern.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å vise respekt for andres grenser</li>
+                                        <li>At alle har rett til å bestemme over sitt eget bilde</li>
+                                        <li>Å knytte personvern til konkrete situasjoner</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Rollespill: "Hva sier du før du tar bilde av noen?"</li>
+                                        <li>Lage egne "foto-regler" i klassen</li>
+                                        <li>Lage plakater med «Spør først!»-budskap</li>
+                                        <li>Snakke sammen i sirkel: "Hvordan ville du følt det om noen tok bilde av deg uten å spørre?"</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Observasjon: Spør elevene om lov i praksis?</li>
+                                        <li>Samtale: "Hva gjør du hvis du vil ta bilde av noen?"</li>
+                                        <li>Elevens egne regler eller refleksjonssamtaler</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Kamera på nettbrett/mobil</li>
+                                <li>Book Creator eller Seesaw – for å øve på innhenting av samtykke før bilde/video legges inn i digitale produkter</li>
+                            `;
+                            break;
+                        case 'Referere muntlig til kilder ved søk (si hvor bildet er hentet fra)':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Når elevene bruker bilder eller informasjon fra internett, skal de kunne si hvor de fant det. Dette gir en første forståelse for kildebruk.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å forstå at innhold på nettet har en opphavsperson</li>
+                                        <li>Å utvikle gode vaner for kildehenvisning, muntlig i første omgang</li>
+                                        <li>Å sette ord på egne søk og valg</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Finne bilde på Pixabay og si høyt: "Jeg fant dette bildet på Pixabay"</li>
+                                        <li>Læreren spør: "Hvor fant du det?" etter hver bildesøk-aktivitet</li>
+                                        <li>Lage enkel fremvisning av søk: "Jeg søkte på 'katt' og fant dette på NRK Skole"</li>
+                                        <li>Bruke "bildekort" med navnet på kilde under</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Spør elevene underveis: "Hvor fant du det bildet?"</li>
+                                        <li>Bruk "presentasjonsrunder" der elevene sier hvor materialet er hentet fra</li>
+                                        <li>Læreren noterer muntlig kildebruk i observasjonsskjema</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Pixabay, Unsplash, NRK Skole, Wikipedia (med veiledning)</li>
+                                <li>Book Creator – med liten tekstboks: "Bildet er fra …"</li>
+                                <li>Seesaw – muntlig forklaring: "Jeg brukte bilde fra…"</li>
+                            `;
+                            break;
+                        case 'Samtale om opphavsrett':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal lære at noen eier innholdet de finner på internett, og at det ikke alltid er lov å bruke alt man finner. Dette er en enkel introduksjon til opphavsrett.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>At bilder, tekster og filmer har en skaper</li>
+                                        <li>At det er regler for hva man kan bruke, og hvordan</li>
+                                        <li>Å velge bilder med fri bruk (Creative Commons)</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Samtale: "Hva betyr det å eie et bilde?"</li>
+                                        <li>Se to bilder – ett med copyright og ett fra Pixabay – og snakk om forskjellen</li>
+                                        <li>Lytte til og lage regler sammen: "Hva skal vi tenke på før vi bruker et bilde?"</li>
+                                        <li>Se på bilder i Google og snakk om hvorfor noen har vannmerke</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Samtale med klassen: "Hva kan vi bruke? Hva må vi spørre om?"</li>
+                                        <li>Rollespill: "Jeg fant dette bildet – kan jeg bruke det?"</li>
+                                        <li>Lage klasseplakat: "Vår bildebruk-regel"</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Pixabay / Unsplash (frie bilder med tydelig lisens)</li>
+                                <li>Smartboard-presentasjon med eksempler på hva man kan og ikke kan bruke</li>
+                                <li>Bruk gjerne NRK Skole eller Salaby – innhold med klar brukslisens</li>
+                            `;
+                            break;
+                        case 'Huske eget brukernavn og passord':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Eleven skal kunne logge inn selvstendig på skolens digitale systemer, og kjenne igjen sitt brukernavn og passord.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Egen identitet i digitale systemer</li>
+                                        <li>Betydningen av personvern og sikkerhet</li>
+                                        <li>Å mestre innlogging og skrive inn passord korrekt</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Øve på å skrive inn brukernavn/passord på iPad/PC regelmessig</li>
+                                        <li>Læreren lager øvelser med tastatur og små oppgaver som krever innlogging</li>
+                                        <li>Samtale om hvorfor man ikke skal dele passordet sitt</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Observasjon: Logger eleven inn selv?</li>
+                                        <li>Refleksjon: "Hva gjør du hvis du glemmer passordet?"</li>
+                                        <li>Tverrfaglig: Lage «passordregler» sammen i klassen</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Skolens plattform (Feide, Teams, Google, Showbie, osv.)</li>
+                                <li>Bruk av passordkort med bilde og fargekode for støtte (hvis tillatt)</li>
+                                <li>Øve med tastatur-apper, f.eks. KeySeeker (for yngre barn)</li>
+                            `;
+                            break;
+                        case 'Logge inn og bruke digitale læremidler':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal kunne finne og bruke digitale ressurser, som læringsspill, oppgaver eller lesestoff, gjennom en plattform de har tilgang til.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Navigasjon i brukergrensesnitt</li>
+                                        <li>Å hente opp oppgaver og fullføre dem</li>
+                                        <li>Å forstå sammenhengen mellom innlogging og tilgang til læring</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Daglig bruk av plattform (f.eks. Salaby, Kikora, Multi Smart Øving)</li>
+                                        <li>Læringsstasjoner der elevene bruker ulike apper for norsk, matte, osv.</li>
+                                        <li>Utforske læremidler sammen og "hjelpe en venn" med å finne fram</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Logg: Fullfører eleven digitale oppgaver?</li>
+                                        <li>Observasjon: Finner eleven frem uten hjelp?</li>
+                                        <li>Sjekkpunkter på tavle: "1. Logg inn – 2. Finn oppgaven – 3. Gjør oppgaven"</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Salaby, Multi Smart Øving, Lesemeister, Skolen fra Cappelen Damm</li>
+                                <li>Book Creator – gi oppgaver elevene åpner og løser selv</li>
+                                <li>Seesaw – finne og levere oppgaver</li>
+                            `;
+                            break;
+                        case 'Gjennomføre enkle søk i søkeprogram':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal lære å bruke enkle søkeord for å finne informasjon eller bilder på nettet.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Hvordan man skriver søkeord</li>
+                                        <li>Hva som skjer når du søker (du får mange treff)</li>
+                                        <li>Å vurdere hvilket treff som passer</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Søk etter "katt" og velg ut bilder som passer til egen tekst</li>
+                                        <li>Lage "søkekonkurranse": Hvem finner et bilde av et dyr som bor i Afrika?</li>
+                                        <li>Samtale: Hva søkte du på? Fikk du det du lette etter?</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Muntlig forklaring: "Hva søkte du på?"</li>
+                                        <li>Observasjon: Bruker eleven relevante søkeord?</li>
+                                        <li>Loggføring i par: "Vi søkte på … og fant …"</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>KidRex eller Kiddle (barnetilpasset søkemotor)</li>
+                                <li>Google Bildesøk med veiledning</li>
+                                <li>NRK Skole, Pixabay, Wikipedia Junior</li>
+                            `;
+                            break;
+                        case 'Lese enkle digitale tekster':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Eleven skal kunne lese korte, digitale tekster – både med og uten støtte som opplesing eller bilder – på sin egen enhet.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å navigere i enkle leseapper eller nettsider</li>
+                                        <li>Å kombinere lesing av tekst med visuell støtte (bilder, lyd)</li>
+                                        <li>Å øve opp digital leseforståelse</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Bruke Salaby, Lesemeister eller Skolen fra Cappelen Damm</li>
+                                        <li>Lese digitale bøker med opplesing og deretter samtale i smågrupper</li>
+                                        <li>Lese korte instruksjoner i digitale oppgaver</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Observasjon: Følger eleven med og klarer å lese innholdet?</li>
+                                        <li>Enkel samtale: "Hva handlet teksten om?"</li>
+                                        <li>Digitale leseprøver (f.eks. via Multi/Salaby)</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Salaby</li>
+                                <li>Lesemeister</li>
+                                <li>Book Creator (læreren lager egne lesetekster med bilder og lyd)</li>
+                                <li>Polylino – digitale bildebøker med opplesing</li>
+                            `;
+                            break;
+                        case 'Behandle enheten på en trygg og god måte (iPad-regler)':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Eleven skal vite hvordan man bruker iPad eller annen enhet på en ansvarlig og respektfull måte – både fysisk og digitalt.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å bruke teknologi med omsorg og ansvar</li>
+                                        <li>Å utvikle gode vaner for håndtering, opplading, oppbevaring</li>
+                                        <li>Å respektere regler for bruk og skjermtid</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Lage klassens "iPad-regler" sammen (plakat med bilder og tekst)</li>
+                                        <li>Rollespill: Hva gjør vi når noen er uforsiktige?</li>
+                                        <li>"iPad-vakt" i klassen – elevene hjelper med å sjekke at alle har behandlet utstyret riktig</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Lærersjekk: Hvordan elevene håndterer iPaden over tid</li>
+                                        <li>Samtaler i klassen: Hva betyr det å være forsiktig?</li>
+                                        <li>Egenvurdering: "Har jeg behandlet iPaden min riktig i dag?"</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Lage en regleplakat i Book Creator eller Keynote</li>
+                                <li>Lage en film i iMovie: "Slik behandler vi iPaden vår"</li>
+                                <li>Bruke Seesaw for å lage digitale refleksjoner rundt bruken</li>
+                            `;
+                            break;
+                        case 'Finne frem på iPaden sin (finne riktig app, mappe, oppgave, dokument og lekse)':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Eleven skal kunne navigere på iPaden sin for å finne frem til det læreren ber om: rett app, riktig dokument eller arbeidsmappe.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Navigering på nettbrett og utvikling av digital selvstendighet</li>
+                                        <li>Å forstå strukturen i mapper, apper og filer</li>
+                                        <li>Å finne skolearbeid selv og følge instruksjoner</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Ukentlige "iPad-oppdrag": "Finn appen Seesaw og åpne matteoppgaven"</li>
+                                        <li>Lage faste mapper med farger/emojier for norsk, matte osv.</li>
+                                        <li>Bruke bildeinstruksjoner som viser "Slik gjør du det"</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Observasjon: Finner eleven frem uten hjelp?</li>
+                                        <li>Oppgavesjekk: Har eleven levert riktig oppgave?</li>
+                                        <li>Egenvurdering: "Klarte jeg å finne det jeg skulle i dag?"</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>iPadens egne mapper og filsystem (Filer-appen, Hjem-skjerm)</li>
+                                <li>Seesaw / Showbie / Google Disk – for å øve på å finne oppgaver</li>
+                                <li>Skjermopptak fra lærer som viser vei</li>
+                            `;
+                            break;
+                        case 'Samtale om hva vi bruker iPad til på skolen og hjemme':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal kunne snakke om hvordan de bruker iPaden til læring på skolen og hva de bruker den til privat – og forstå forskjellen.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>Å reflektere over eget bruk av digitale verktøy</li>
+                                        <li>Å skille mellom læringsbruk og underholdning</li>
+                                        <li>Å utvikle et bevisst forhold til skjermbruk</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Samtale i sirkel: "Hva gjør du med iPaden hjemme? Hva gjør du på skolen?"</li>
+                                        <li>Lage tankekart med to kolonner: Skole og Hjemme</li>
+                                        <li>Tegne eller skrive: "Min iPad-dag på skolen"</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Muntlige samtaler</li>
+                                        <li>Refleksjonsoppgaver</li>
+                                        <li>Lage en "iPad-bruk-plakat" som klassen kan henge opp</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Book Creator eller Keynote for å lage digitale bokprosjekter om iPad-bruk</li>
+                                <li>Mentimeter / Padlet for å samle elevenes refleksjoner anonymt</li>
+                                <li>Bruke iPaden til å lage en film der eleven forteller om bruken sin</li>
+                            `;
+                            break;
+                        case 'Bli kjent med å bruke ulike digitale verktøy for læring':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal få erfaring med forskjellige typer digitale læremidler og apper, og forstå at disse hjelper dem å lære.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hva lærer elevene?</h3>
+                                    <ul>
+                                        <li>At ulike verktøy kan hjelpe med ulike fag (for eksempel matte, lesing, skriving)</li>
+                                        <li>Å prøve seg fram og få mestring i digitale oppgaver</li>
+                                        <li>Å se på iPaden som en del av læringsmiljøet</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Lage "Digitale stasjoner" med ulik app på hver: en for skriving, en for lesing, en for matte</li>
+                                        <li>Gi elevene "Digitalt verktøykort" – de krysser av for hver app de prøver</li>
+                                        <li>Utforske nye apper sammen og snakke om: "Hva kan vi bruke denne til?"</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Lærersamtale: "Hvilke verktøy liker du best å bruke når du lærer?"</li>
+                                        <li>Elevene viser fram arbeidet de har gjort i ulike apper</li>
+                                        <li>Bruke refleksjonskort: "Hva lærte jeg med denne appen i dag?"</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Book Creator – for å lage tekster og fortellinger</li>
+                                <li>Multi Smart Øving – matteoppgaver</li>
+                                <li>Lesemeister / Salaby / Polylino – lesetrening</li>
+                                <li>Osmo – for kreativ og konkret læring</li>
+                                <li>Blue-Bots / Scratch Jr – for enkel programmering</li>
+                            `;
+                            break;
+                        case 'Samtale om hva og hvor mye vi bruker digitale enheter på skolen og hjemme':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene reflekterer over bruk av digitale enheter.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter bruk av digitale enheter</li>
+                                        <li>Sammenlign bruk på skolen og hjemme</li>
+                                        <li>Reflekter over fordeler og utfordringer</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Redd Barna - Nettvett</li>
+                                <li>Nettvettsregler for barn</li>
+                            `;
+                            break;
+                        default:
                 modalDescription.innerHTML = `<p>Her kommer detaljert informasjon om hvordan man kan nå målet: ${goalText}</p>`;
-                modalResources.innerHTML = resources;
+                            modalResources.innerHTML = goal.closest('tr').querySelector('td:last-child ul').innerHTML;
+                    }
+                } else if (goal.closest('.trinn4')) {
+                    switch(goalText) {
+                        case 'Lese inn tekster':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal kunne spille inn sin egen høytlesing av tekster, slik at de kan dele, vurdere og utvikle leseflyt og uttale.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Mål for elevene</h3>
+                                    <ul>
+                                        <li>Øve på flyt og tydelig uttale</li>
+                                        <li>Bruke digitalt verktøy til å spille inn og lytte til egen lesing</li>
+                                        <li>Lære å vurdere egen fremføring</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Spille inn ukas lesetekst og lytte til den selv</li>
+                                        <li>Lage lydbok av egen historie eller faktatekst</li>
+                                        <li>Øve på innlesing av dikt eller små replikker (f.eks. dramatisering)</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Lærersamtale om forbedring fra første til andre innlesing</li>
+                                        <li>Med-elev-vurdering (f.eks. to stjerner og ett ønske)</li>
+                                        <li>Lydfil som dokumentasjon av leseflyt over tid</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Book Creator (innebygd lydopptak)</li>
+                                <li>GarageBand eller Voice Memos</li>
+                                <li>Seesaw (innlevering og tilbakemelding)</li>
+                            `;
+                            break;
+                        case 'Skrive tekster med tastatur':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal kunne bruke tastatur til å skrive både korte og lengre tekster, og bruke grunnleggende tekstbehandling (lagre, redigere, flytte tekst osv.).</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Mål for elevene</h3>
+                                    <ul>
+                                        <li>Mestre skriving med tastatur</li>
+                                        <li>Bruke tekstbehandlingsverktøy som hjelpemiddel</li>
+                                        <li>Utvikle struktur i egne tekster (avsnitt, overskrifter, osv.)</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Skrive faktatekster eller fortellinger i Pages</li>
+                                        <li>Lage skriveoppgaver med rammer i Google Docs</li>
+                                        <li>Skrive felles tekst i stasjonsundervisning – en gruppe på papir, en på iPad</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Vurdere struktur, rettskriving og innhold</li>
+                                        <li>Elevsamtaler med digital skriving som utgangspunkt</li>
+                                        <li>Bruke funksjoner som ordbank og stavekontroll i skriveprosessen</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Pages eller Word Online</li>
+                                <li>Book Creator</li>
+                                <li>Google Docs (dersom elevene har Google-konto)</li>
+                            `;
+                            break;
+                        case 'Utforske, lage og presentere faglig innhold ved bruk av ulike digitale ressurser':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Eleven skal kunne finne, bearbeide og presentere fagstoff digitalt – f.eks. i form av presentasjoner, bokprosjekter eller podkaster.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Mål for elevene</h3>
+                                    <ul>
+                                        <li>Finne relevant informasjon</li>
+                                        <li>Lage egne digitale fremstillinger</li>
+                                        <li>Øve på formidling gjennom tekst, bilde, lyd og tale</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Lage faktabok i Book Creator om et tema i naturfag eller samfunnsfag</li>
+                                        <li>Lage en digital presentasjon om et land, en historisk person, eller et dyr</li>
+                                        <li>Spille inn "minuttnyheter" i grupper med fakta fra ukens læring</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Fremføring med sjekkliste for innhold, struktur og kreativitet</li>
+                                        <li>Egenevaluering: Hva fikk du til? Hva lærte du?</li>
+                                        <li>Deling i klasserommet eller på læringsplattform</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Book Creator</li>
+                                <li>Keynote / PowerPoint / Google Slides</li>
+                                <li>iMovie / Clips / GarageBand for lyd og film</li>
+                            `;
+                            break;
+                        case 'Kombinere ulike uttrykksformer i sammensatte tekster':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal kunne lage tekster som kombinerer ulike uttrykksformer – f.eks. tekst + bilde, tekst + lyd, eller animasjon + fortellerstemme.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Mål for elevene</h3>
+                                    <ul>
+                                        <li>Forstå hvordan bilde, lyd og tekst kan forsterke hverandre</li>
+                                        <li>Lage egne sammensatte tekster</li>
+                                        <li>Øve på kreativ digital formidling</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Lage digital eventyrbok med tekst, bilder og innlest lyd</li>
+                                        <li>Lage reklameplakat med bilde og slagord</li>
+                                        <li>Skrive og spille inn en digital tegneserie eller animasjon</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Vurdere bruk av virkemidler: hvordan samspiller bilde og tekst?</li>
+                                        <li>Elevene viser arbeidet og forklarer sine valg</li>
+                                        <li>Muntlig refleksjon: Hvilken del av arbeidet var vanskeligst? Mest gøy?</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Book Creator</li>
+                                <li>Puppet Pals / Stop Motion Studio</li>
+                                <li>Keynote med lydopptak</li>
+                                <li>Canva (for plakater / design)</li>
+                            `;
+                            break;
+                        case 'Gjøre funksjonelle søk':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal kunne gjennomføre enkle og målrettede søk etter informasjon, og forstå hvordan man vurderer hvilke kilder som er nyttige.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Mål for elevene</h3>
+                                    <ul>
+                                        <li>Finne svar på konkrete spørsmål ved å bruke søkemotorer</li>
+                                        <li>Bruke søkeord bevisst</li>
+                                        <li>Skille mellom nyttig og mindre nyttig informasjon</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Svar på spørsmål fra lærer ved hjelp av internett (f.eks. "Hva spiser en koala?")</li>
+                                        <li>Lage felles tankekart om søkeord – "hva kan vi søke på for å finne ut av …"</li>
+                                        <li>Samtale om hvilke nettsider som er gode å bruke (f.eks. Store norske leksikon)</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Vurdere hvorvidt elevene finner relevant informasjon</li>
+                                        <li>Samtale om hvordan de fant svaret og hvilke søkeord de brukte</li>
+                                        <li>Observere om elevene kan tilpasse søkeord når første søk ikke gir gode treff</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Google, Kvasir eller DuckDuckGo (barnevennlig)</li>
+                                <li>Store Norske Leksikon (snl.no)</li>
+                                <li>Wikipedia (med lærer som veileder)</li>
+                            `;
+                            break;
+                        case 'Redigere tekst og bilder':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Eleven skal kunne forbedre og justere både skriftlig og visuelt arbeid ved hjelp av digitale verktøy.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Mål for elevene</h3>
+                                    <ul>
+                                        <li>Endre og forbedre egne tekster: rette, flytte og legge til tekst</li>
+                                        <li>Justere bilder: beskjære, snu, endre størrelse, legge på filter eller tekst</li>
+                                        <li>Forstå hvordan redigering påvirker sluttproduktet</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Gå tilbake til tidligere skrevet tekst og gjøre forbedringer i språk og innhold</li>
+                                        <li>Lage før-og-etter-redigering av bilde og forklare hva som ble gjort</li>
+                                        <li>Lage collage med tekst og redigerte bilder (f.eks. "Mitt drømmested")</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Samtale om hvordan redigering forbedret arbeidet</li>
+                                        <li>La elevene sammenligne første og siste versjon</li>
+                                        <li>"Min redigeringsprosess" – små loggtekster med refleksjon</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Pages, Google Docs eller Word Online</li>
+                                <li>Book Creator</li>
+                                <li>Photos-appen på iPad (for beskjæring, filter, tekst)</li>
+                                <li>Canva (enkel designredigering)</li>
+                            `;
+                            break;
+                        case 'Eksperimentere med rytmer, melodier og andre grunnelementer, og sette sammen mønstre til komposisjoner':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal kunne bruke digitale verktøy til å leke med musikkens grunnelementer, som rytme og melodi, og skape egne musikalske mønstre.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Mål for elevene</h3>
+                                    <ul>
+                                        <li>Lage egne musikkstykker ved å kombinere rytmer og lyder</li>
+                                        <li>Utforske og forstå hvordan musikk bygges opp</li>
+                                        <li>Samarbeide om små musikkprosjekter digitalt</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Lage "beat loop" i GarageBand og legge til egne instrumenter eller stemme</li>
+                                        <li>Bruke trommemaskin-app eller kode musikk i Scratch</li>
+                                        <li>Samtale om musikkens oppbygging: "Hva skjer i introen? Refrenget?"</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Fremføring av musikkstykker i klassen</li>
+                                        <li>Refleksjonssamtale: Hva valgte du? Hvorfor låter det slik?</li>
+                                        <li>Deling på læringsplattform med tilbakemelding fra lærer og medelever</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>GarageBand (iPad eller Mac)</li>
+                                <li>Chrome Music Lab (gratis og nettbasert)</li>
+                                <li>Incredibox (musikkspill)</li>
+                                <li>Scratch med musikkblokk-koding</li>
+                            `;
+                            break;
+                        case 'Bruke digitale ressurser til å utforske språket og utøve med andre':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal bruke digitale verktøy til å utforske språk – både norsk og fremmedspråk – og kommunisere eller samarbeide med andre elever.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Mål for elevene</h3>
+                                    <ul>
+                                        <li>Bruke digitale læringsressurser for å øve på ord, uttale og grammatikk</li>
+                                        <li>Samarbeide digitalt i språkaktiviteter</li>
+                                        <li>Bruke lyd, tekst og bilder for å uttrykke seg</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Lage digitale ord- eller uttrykksbøker i norsk/engelsk</li>
+                                        <li>Jobbe to og to med å lage digitale dialoger eller rollespill</li>
+                                        <li>Bruke språkapper til uttale- og vokabulartrening</li>
+                                        <li>Øve på ord og uttrykk med digitale spill og quizer</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Elevene leser inn og leverer egne ordforklaringer eller dialoger</li>
+                                        <li>Samtale i par: Hva lærte vi? Hvordan samarbeidet vi?</li>
+                                        <li>Vise frem digitale oppgaver i gruppe eller til klassen</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Book Creator (egne ord- og bildeordbøker)</li>
+                                <li>Kahoot, Quizlet, Wordwall</li>
+                                <li>Osmo Words eller Osmo Vocabulary</li>
+                                <li>Lingokids (engelsk, tilpasset yngre elever)</li>
+                                <li>Seesaw eller Google Slides til å lage digitale dialoger</li>
+                            `;
+                            break;
+                        case 'Enkel programmering ved bruk av variabler, vilkår og løkker':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal kunne forstå og bruke grunnleggende prinsipper i programmering, som løkker (gjentakelser), vilkår (hvis – så), og variabler (lagre informasjon).</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Mål for elevene</h3>
+                                    <ul>
+                                        <li>Forstå hvordan man lager enkle programmer som reagerer på input</li>
+                                        <li>Bruke løkker for å gjenta kode</li>
+                                        <li>Bruke variabler til å lagre informasjon (f.eks. poeng, navn)</li>
+                                        <li>Bruke vilkår for å få programmet til å ta valg</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Lage spill i Scratch med poeng og regler</li>
+                                        <li>Lage en interaktiv historie hvor karakteren tar valg basert på input</li>
+                                        <li>Bruke Micro:bit til å lage en enkel teller, terning eller navnevise</li>
+                                        <li>Bruke blokkbasert koding for å styre figurer og roboter</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Elevene forklarer egen kode muntlig eller skriftlig</li>
+                                        <li>Demonstrere hvordan løkker, vilkår og variabler fungerer i et program</li>
+                                        <li>Lærer bruker sjekkliste: Har eleven brukt variabler? Er det en løkke?</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Scratch (scratch.mit.edu)</li>
+                                <li>Micro:bit MakeCode (makecode.microbit.org)</li>
+                                <li>Blockly Games</li>
+                                <li>Osmo Coding Awbie / Osmo Jam</li>
+                                <li>LEGO SPIKE / WeDo (hvis tilgjengelig)</li>
+                            `;
+                            break;
+                        case 'Dele digitalt arbeid med medelever og lærer':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal kunne lagre og dele digitalt arbeid med andre – både til lærer og medelever – gjennom læringsplattformer eller delingsverktøy.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Mål for elevene</h3>
+                                    <ul>
+                                        <li>Levere arbeid digitalt via læringsplattform (f.eks. Showbie, Google Classroom, Teams)</li>
+                                        <li>Dele en fil eller lenke til eget arbeid</li>
+                                        <li>Forstå hva som er egnet å dele med hvem</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Lage en digital bok eller presentasjon og sende til lærer</li>
+                                        <li>Lage noe i Scratch eller Book Creator og dele med en medelev</li>
+                                        <li>Levere ukens skriveoppgave digitalt til mappevurdering</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Eleven viser at de mestrer å lagre, navngi og dele</li>
+                                        <li>Samtale: Hvem delte du med? Hvorfor?</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Showbie, Google Classroom, Microsoft Teams, Seesaw</li>
+                                <li>Book Creator (med delingslenke)</li>
+                                <li>Padlet eller Jamboard for felles deling</li>
+                            `;
+                            break;
+                        case 'Presentere digitalt':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal kunne bruke digitale verktøy til å presentere innhold, og forstå hvordan bilder, tekst og stemme kan formidle et budskap.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Mål for elevene</h3>
+                                    <ul>
+                                        <li>Lage og vise en enkel digital presentasjon</li>
+                                        <li>Snakke til eller med presentasjonen</li>
+                                        <li>Bruke digitale hjelpemidler for å forsterke budskapet (bilder, video, lyd)</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Lage en PowerPoint eller Google Slides-presentasjon om et tema</li>
+                                        <li>Bruke Book Creator med egen innlest lyd</li>
+                                        <li>Filmet presentasjon i Seesaw eller med iPad-kamera</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Læreren vurderer om presentasjonen er tydelig og strukturert</li>
+                                        <li>Elevsamtaler om hvordan de brukte digitale virkemidler</li>
+                                        <li>Medelevvurdering: "En ting jeg likte" / "Et tips videre"</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>PowerPoint, Google Slides, Keynote</li>
+                                <li>Book Creator, Explain Everything</li>
+                                <li>Seesaw eller iMovie til å lage videopresentasjon</li>
+                            `;
+                            break;
+                        case 'Samtale om og øve på hvordan man kommuniserer på chatter, meldinger og sosiale medier (kritisk tenkning)':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal lære hvordan man kommuniserer trygt og respektfullt digitalt, og øve på god nettvett og kritisk tenkning i sosiale sammenhenger.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Mål for elevene</h3>
+                                    <ul>
+                                        <li>Forstå forskjellen på vennlig og sårende språk</li>
+                                        <li>Lære om caps lock, emojis, ironi og tydelig kommunikasjon</li>
+                                        <li>Snakke om hva som er lurt å dele og ikke dele</li>
+                                        <li>Trene på å løse misforståelser digitalt</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Rollespill med chatte-situasjoner (hva skriver vi? Hva kunne vært misforstått?)</li>
+                                        <li>Samtale om "nettvettregler" i klassen</li>
+                                        <li>Bruke Kahoot eller animasjoner med dilemmaer (f.eks. "Hva ville du gjort?")</li>
+                                        <li>Lage egne regler for hvordan vi skal skrive til hverandre digitalt</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Vurderingssamtale: "Hvordan vet vi at det vi skriver blir forstått riktig?"</li>
+                                        <li>Lage klassens 5 digitale regler</li>
+                                        <li>Observere deltakelse og refleksjon under oppgaver og samtaler</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>NRK Skole eller Dubestemmer.no</li>
+                                <li>Kahoot, Padlet eller Mentimeter til å diskutere anonymt</li>
+                                <li>Storyboard That eller Pixton til å lage tegneserier om nettkommunikasjon</li>
+                            `;
+                            break;
+                        case 'Delta i en digital samtale med lærer inkludert':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal kunne skrive meldinger til lærer (og få svar), og trene på enkel og tydelig digital kommunikasjon i læringsøyemed.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Mål for elevene</h3>
+                                    <ul>
+                                        <li>Skrive enkle beskjeder og spørsmål digitalt til lærer</li>
+                                        <li>Svare eller kommentere i en felles digital tråd</li>
+                                        <li>Forstå at man kan få og gi tilbakemelding digitalt</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>"Ukas melding": skrive en digital melding til lærer med spørsmål eller refleksjon</li>
+                                        <li>Øve på å gi respons til andre digitalt ("Jeg likte…", "Et tips er…")</li>
+                                        <li>Få og svare på tilbakemelding på arbeid i Showbie/Google Docs/Teams</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Elevene viser at de kan skrive kort og tydelig</li>
+                                        <li>Lærer observerer om elevene følger netikette og svarer relevant</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Showbie, Google Classroom, Microsoft Teams, Seesaw</li>
+                                <li>Felles digital klasseblogg eller ukesbrev</li>
+                            `;
+                            break;
+                        case 'Samarbeide i digitale læringsspill':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva betyr målet?</h3>
+                                    <p>Elevene skal bruke digitale læringsspill i samarbeid med andre, både for å øve fag og trene på samspill og kommunikasjon.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Mål for elevene</h3>
+                                    <ul>
+                                        <li>Samarbeide to og to eller i små grupper i spill</li>
+                                        <li>Lære faglig innhold gjennom spill</li>
+                                        <li>Kommunisere og ta valg sammen i spillopplevelser</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Forslag til aktiviteter</h3>
+                                    <ul>
+                                        <li>Samarbeide i Minecraft Education om en byggeoppgave</li>
+                                        <li>Spille Kahoot eller Wordwall i par og diskutere svar</li>
+                                        <li>Løse oppdrag i DragonBox, Numbers, Osmo eller Lightbot i grupper</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Vurderingsmuligheter</h3>
+                                    <ul>
+                                        <li>Samtale etter økta: Hvordan samarbeidet dere? Hva lærte dere?</li>
+                                        <li>Observasjon av rollefordeling og samhandling</li>
+                                        <li>Logg eller refleksjon: "Hva gjorde jeg? Hva bidro jeg med?"</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Minecraft Education Edition</li>
+                                <li>Kahoot, Quizlet, Wordwall</li>
+                                <li>DragonBox, Osmo, Lightbot, Sumdog, Scratch</li>
+                            `;
+                            break;
+                        case 'Søke etter informasjon i ulike kilder og vurdere hvor nyttig informasjonen er':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer kildekritikk og informasjonssøk.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk Kildekritikk.no til å lære kildekritikk</li>
+                                        <li>Søk etter informasjon i NRK Skole</li>
+                                        <li>Vurder kilder og informasjon kritisk</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Kildekritikk.no</li>
+                                <li>NRK Skole</li>
+                                <li>Salaby</li>
+                            `;
+                            break;
+                        case 'Samtale om regler og normer for opphavsrett':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer om opphavsrett og rettigheter.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter hva opphavsrett betyr</li>
+                                        <li>Lær om Creative Commons-lisenser</li>
+                                        <li>Bruk lovlige bilder og ressurser</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Pixabay for barn</li>
+                                <li>CreativeCommons-søk</li>
+                                <li>NRK Skole</li>
+                            `;
+                            break;
+                        case 'Samtale om deling og beskyttelse av informasjon':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer om personvern og informasjonssikkerhet.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter personvern og sikkerhet på nett</li>
+                                        <li>Lær om beskyttelse av personlig informasjon</li>
+                                        <li>Bruk trygge passord og innlogging</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Dubestemmer.no</li>
+                                <li>Nettvett.no</li>
+                                <li>Barnevakten.no</li>
+                            `;
+                            break;
+                        case 'Bruke bilder med Creative Commons-lisens':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer å bruke bilder med lovlig lisens.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk CreativeCommons-søk til å finne bilder</li>
+                                        <li>Lær om ulike typer lisenser</li>
+                                        <li>Bruk bilder på riktig måte</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>CreativeCommons-søk</li>
+                                <li>Pixabay for barn</li>
+                            `;
+                            break;
+                        case 'Bruke nettsteder med lovlige bilder':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer å finne og bruke lovlige bilder.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk Pixabay for barn til å finne bilder</li>
+                                        <li>Lær å sjekke lisenser</li>
+                                        <li>Bruk bilder på riktig måte</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Pixabay for barn</li>
+                                <li>CreativeCommons-søk</li>
+                            `;
+                            break;
+                        case 'Samtale om regler og normer for personvern, deling og beskyttelse av informasjon og om hva det vil si å bruke dømmekraft i digital samhandling':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer om personvern og digital dømmekraft.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter personvern og sikkerhet</li>
+                                        <li>Lær om digital dømmekraft</li>
+                                        <li>Bruk Dubestemmer.no til diskusjoner</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Dubestemmer.no</li>
+                                <li>Nettvett.no</li>
+                                <li>Barnevakten.no</li>
+                            `;
+                            break;
+                        case 'Samtale om digital livsmestring i sosiale medier':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer om trygg bruk av sosiale medier.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter bruk av sosiale medier</li>
+                                        <li>Lær om aldersgrenser og regler</li>
+                                        <li>Bruk Nettvett.no til diskusjoner</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Nettvett.no</li>
+                                <li>Barnevakten.no</li>
+                            `;
+                            break;
+                        case 'Samtale om aldersgrenser':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer om aldersgrenser og regler på nett.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter aldersgrenser for ulike tjenester</li>
+                                        <li>Lær om hvorfor aldersgrenser finnes</li>
+                                        <li>Bruk Barnevakten.no til diskusjoner</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Barnevakten.no</li>
+                                <li>Nettvett.no</li>
+                            `;
+                            break;
+                        case 'Samtale om og øve på "god oppførsel" på nett':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer om nettikette og god oppførsel på nett.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter nettikette og god oppførsel</li>
+                                        <li>Øv på trygg kommunikasjon</li>
+                                        <li>Bruk Nettvett.no til diskusjoner</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Nettvett.no</li>
+                                <li>Dubestemmer.no</li>
+                            `;
+                            break;
+                        case 'Lese digitale sammensatte tekster':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler leseferdigheter med digitale tekster.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk digitale lesebøker og tekster</li>
+                                        <li>Bruk støttefunksjoner som tekst-til-tale</li>
+                                        <li>Diskuter innhold i grupper</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Feide</li>
+                                <li>Kiddle</li>
+                            `;
+                            break;
+                        case 'Bruke tale til tekst på iPaden (dikter-funksjon) ved behov':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer å bruke tale-til-tekst funksjoner.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk dikter-funksjonen på iPad</li>
+                                        <li>Øv på tale-til-tekst</li>
+                                        <li>Bruk støttefunksjoner ved behov</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>iPad dikter-funksjon</li>
+                                <li>Feide</li>
+                            `;
+                            break;
+                        case 'Kjenne til les opp-funksjonen i apper og engasjerende leser i Office':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer å bruke leseopp-funksjoner.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk les opp-funksjonen i apper</li>
+                                        <li>Bruk engasjerende leser i Office</li>
+                                        <li>Utforsk ulike støttefunksjoner</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Microsoft Office</li>
+                                <li>Feide</li>
+                            `;
+                            break;
+                        case 'Samtale om hva det vil si å bruke dømmekraft i digital samhandling':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer om digital dømmekraft og kritisk tenkning.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter digital dømmekraft</li>
+                                        <li>Lær om kritisk tenkning på nett</li>
+                                        <li>Bruk Dubestemmer.no til diskusjoner</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Dubestemmer.no</li>
+                                <li>Medietilsynet - Barn og medier</li>
+                            `;
+                            break;
+                        case 'Bruke ulike digitale verktøy for læring':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utforsker ulike digitale læringsverktøy.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Prøv ut ulike læringsapper</li>
+                                        <li>Diskuter hva som fungerer bra</li>
+                                        <li>Del erfaringer med andre</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Dubestemmer.no</li>
+                                <li>Nettvettsregler for barn</li>
+                            `;
+                            break;
+                        case 'Samtale om hva sosiale medier er, og hva disse kan brukes til':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer om sosiale medier og deres bruksområder.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter ulike sosiale medier</li>
+                                        <li>Lær om bruksområder og risiko</li>
+                                        <li>Bruk Medietilsynet - Barn og medier til diskusjoner</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Medietilsynet - Barn og medier</li>
+                                <li>Nettvettsregler for barn</li>
+                            `;
+                            break;
+                        case 'Samtale om hva og hvor mye vi bruker digitale enheter på skolen og hjemme':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene reflekterer over bruk av digitale enheter.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter bruk av digitale enheter</li>
+                                        <li>Sammenlign bruk på skolen og hjemme</li>
+                                        <li>Reflekter over fordeler og utfordringer</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Redd Barna - Nettvett</li>
+                                <li>Nettvettsregler for barn</li>
+                            `;
+                            break;
+                        default:
+                            modalDescription.innerHTML = `<p>Her kommer detaljert informasjon om hvordan man kan nå målet: ${goalText}</p>`;
+                            modalResources.innerHTML = goal.closest('tr').querySelector('td:last-child ul').innerHTML;
+                    }
+                } else if (goal.closest('.trinn7')) {
+                    switch(goalText) {
+                        case 'Beherske touch-metoden':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler effektiv tastaturskriving ved hjelp av touch-metoden.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk spesialiserte tastaturskrivingsprogrammer</li>
+                                        <li>Øv regelmessig på touch-metoden</li>
+                                        <li>Bruk tastaturskriving i daglige oppgaver</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Microsoft Word</li>
+                                <li>Google Docs</li>
+                            `;
+                            break;
+                        case 'Lage sammensatte tekster (tekst, lyd, bilde, video) og publisere og dele dem digitalt':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer å skape og dele komplekse digitale innhold.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk Canva til å lage visuelle presentasjoner</li>
+                                        <li>Rediger video med iMovie eller WeVideo</li>
+                                        <li>Kombiner ulike medier i Adobe Express</li>
+                                        <li>Lag stop-motion animasjoner</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Canva</li>
+                                <li>iMovie/WeVideo</li>
+                                <li>Adobe Express</li>
+                                <li>StopMotion</li>
+                            `;
+                            break;
+                        case 'Bruke programmering til å skape spill og interaktive fortellinger':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler avanserte programmeringsferdigheter gjennom kreative prosjekter.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk Scratch til å lage interaktive historier og spill</li>
+                                        <li>Programmer Micro:bit til fysiske prosjekter</li>
+                                        <li>Utforsk avanserte programmeringskonsepter</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Scratch</li>
+                                <li>Micro:bit</li>
+                            `;
+                            break;
+                        case 'Bruke regneark til å organisere og presentere data':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer å bruke regneark for databehandling og visualisering.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk Excel eller Google Sheets til databehandling</li>
+                                        <li>Lag diagrammer og grafer</li>
+                                        <li>Bruk enkle formler og funksjoner</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Microsoft Excel</li>
+                                <li>Google Sheets</li>
+                            `;
+                            break;
+                        case 'Designe og lage digitale spill og animasjoner med ulike figurer og betingelser':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler avanserte programmeringsferdigheter gjennom spillutvikling og animasjon.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk Scratch til å lage interaktive spill</li>
+                                        <li>Programmer Micro:bit til fysiske prosjekter</li>
+                                        <li>Utforsk avanserte programmeringskonsepter</li>
+                                        <li>Lag animasjoner med ulike figurer og betingelser</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Scratch</li>
+                                <li>Micro:bit</li>
+                            `;
+                            break;
+                        case 'Lage egne databaser og strukturere informasjon i dem':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer grunnleggende databasedesign og informasjonsstrukturering.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk Excel eller Google Sheets til å lage enkle databaser</li>
+                                        <li>Lær å strukturere og organisere data</li>
+                                        <li>Bruk enkle formler og funksjoner for databehandling</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Microsoft Excel</li>
+                                <li>Google Sheets</li>
+                            `;
+                            break;
+                        case 'Utforske teknologiske systemer, forklare og beskrive hvordan de virker':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler forståelse for teknologiske systemer og deres funksjon.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Utforsk og analyser ulike teknologiske systemer</li>
+                                        <li>Bruk Micro:bit til å eksperimentere med teknologi</li>
+                                        <li>Lag dokumentasjon av systemenes funksjon</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Micro:bit</li>
+                                <li>Microsoft Word</li>
+                                <li>Google Docs</li>
+                            `;
+                            break;
+                        case 'Bruke digitale verktøy for å visualisere og simulere faglig innhold':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer å bruke digitale verktøy for visualisering og simulering.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk GeoGebra til matematiske visualiseringer</li>
+                                        <li>Bruk Canva til å lage visuelle presentasjoner</li>
+                                        <li>Bruk iMovie/WeVideo til å lage simuleringer</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>GeoGebra</li>
+                                <li>Canva</li>
+                                <li>iMovie/WeVideo</li>
+                            `;
+                            break;
+                        case 'Samarbeide digitalt om alle deler av en arbeidsprosess':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler avanserte samarbeidsferdigheter i digitale miljøer.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk Teams til videomøter og samarbeid</li>
+                                        <li>Bruk OneNote til felles notatbøker</li>
+                                        <li>Bruk Google Classroom til oppgavehåndtering</li>
+                                        <li>Bruk Padlet til felles ideer og ressurser</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Teams</li>
+                                <li>OneNote</li>
+                                <li>Google Classroom</li>
+                                <li>Padlet</li>
+                            `;
+                            break;
+                        case 'Planlegge og gjennomføre digitale presentasjoner for ulike målgrupper':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer å tilpasse presentasjoner for ulike målgrupper.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk PowerPoint til profesjonelle presentasjoner</li>
+                                        <li>Bruk Flip til videopresentasjoner</li>
+                                        <li>Bruk Mentimeter til interaktive presentasjoner</li>
+                                        <li>Bruk Wakelet til digitale samlinger</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Microsoft PowerPoint</li>
+                                <li>Flip</li>
+                                <li>Mentimeter</li>
+                                <li>Wakelet</li>
+                            `;
+                            break;
+                        case 'Reflektere over og diskutere hvordan kommunikasjon påvirkes av digital teknologi':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler kritisk forståelse for digital kommunikasjon.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter påvirkning av digitale verktøy på kommunikasjon</li>
+                                        <li>Bruk Teams til digitale diskusjoner</li>
+                                        <li>Bruk Flip til videodiskusjoner</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Teams</li>
+                                <li>Flip</li>
+                                <li>Mentimeter</li>
+                            `;
+                            break;
+                        case 'Formulere og etterprøve problemstillinger ved bruk av digitale verktøy og samarbeidsplattformer':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer å bruke digitale verktøy til problemløsning.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk Teams til samarbeid om problemstillinger</li>
+                                        <li>Bruk OneNote til dokumentasjon</li>
+                                        <li>Bruk Google Classroom til oppgavehåndtering</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Teams</li>
+                                <li>OneNote</li>
+                                <li>Google Classroom</li>
+                            `;
+                            break;
+                        case 'Vite hvordan digital kommunikasjon påvirker relasjoner og identitet':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler forståelse for digital påvirkning på relasjoner.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter påvirkning av digitale medier</li>
+                                        <li>Bruk Nettvett.no til diskusjoner</li>
+                                        <li>Bruk Slettmeg.no til personvern</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Nettvett.no</li>
+                                <li>Slettmeg.no</li>
+                                <li>Redd Barna - Nettvett</li>
+                            `;
+                            break;
+                        case 'Diskutere konsekvenser av digital mobbing og deling på nett':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer om konsekvenser av digital mobbing og deling.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter konsekvenser av digital mobbing</li>
+                                        <li>Bruk Redd Barna - Nettvett til diskusjoner</li>
+                                        <li>Bruk Barneombudet til rettigheter</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Redd Barna - Nettvett</li>
+                                <li>Barneombudet</li>
+                                <li>Ung.no</li>
+                            `;
+                            break;
+                        case 'Vurdere kilders troverdighet og relevans og velge kilder på en reflektert måte':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler avansert kildekritikk og kildevalg.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk Kildekritikk.no til kildeanalyse</li>
+                                        <li>Bruk Faktisk.no til faktasjekking</li>
+                                        <li>Bruk Kildekompasset til kildevalg</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Kildekritikk.no</li>
+                                <li>Faktisk.no</li>
+                                <li>Kildekompasset</li>
+                            `;
+                            break;
+                        case 'Oppgi kilder etter gjeldende regler':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer korrekt kildehenvisning og referanse.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Lær standarder for kildehenvisning</li>
+                                        <li>Bruk Wikipedia - Kildekriterier</li>
+                                        <li>Øv på korrekt referanse i dokumenter</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Wikipedia - Kildekriterier</li>
+                                <li>Microsoft Word</li>
+                                <li>Google Docs</li>
+                            `;
+                            break;
+                        case 'Forklare hvordan algoritmer påvirker informasjonen vi får på nett':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler forståelse for algoritmers påvirkning.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter algoritmers rolle på nett</li>
+                                        <li>Bruk Medietilsynet til informasjon</li>
+                                        <li>Analyser søkeresultater og sosiale medier</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Medietilsynet</li>
+                                <li>Kildekompasset</li>
+                            `;
+                            break;
+                        case 'Diskutere hva opphavsrett og personvern betyr i digital sammenheng':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler forståelse for opphavsrett og personvern.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter opphavsrett og personvern</li>
+                                        <li>Bruk Datatilsynet - Personvern i skolen</li>
+                                        <li>Lær om rettigheter og plikter</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Datatilsynet - Personvern i skolen</li>
+                                <li>Medietilsynet</li>
+                            `;
+                            break;
+                        case 'Skille mellom fakta, meninger og kommersielt innhold på nett':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer å skille mellom ulike typer innhold.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk Faktisk.no til faktasjekking</li>
+                                        <li>Analyser reklame og kommersielt innhold</li>
+                                        <li>Diskuter forskjeller mellom fakta og meninger</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Faktisk.no</li>
+                                <li>Kildekritikk.no</li>
+                            `;
+                            break;
+                        case 'Gjenkjenne falske nyheter og manipulert innhold':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer å identifisere falske nyheter og manipulert innhold.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk Faktisk.no til faktasjekking</li>
+                                        <li>Lær teknikker for å gjenkjenne falske nyheter</li>
+                                        <li>Analyser kilder og innhold kritisk</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Faktisk.no</li>
+                                <li>Kildekritikk.no</li>
+                                <li>Medietilsynet</li>
+                            `;
+                            break;
+                        case 'Vurdere risiko og håndtere identitet og privatliv i digitale medier':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer å håndtere risiko og personvern i digitale medier.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter risiko og personvern</li>
+                                        <li>Bruk Slettmeg.no til personvern</li>
+                                        <li>Lær om digitale fotavtrykk</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Slettmeg.no</li>
+                                <li>Redd Barna - Nettvett</li>
+                                <li>Barneombudet</li>
+                            `;
+                            break;
+                        case 'Diskutere fordeler og utfordringer ved digital kommunikasjon':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler kritisk forståelse for digital kommunikasjon.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter fordeler og utfordringer</li>
+                                        <li>Bruk Nettvett.no til diskusjoner</li>
+                                        <li>Reflekter over egen bruk</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Nettvett.no</li>
+                                <li>Ung.no</li>
+                            `;
+                            break;
+                        case 'Reflektere over egen og andres digitale identitet':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler bevissthet om digital identitet.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter digital identitet</li>
+                                        <li>Bruk Dubestemmer.no til diskusjoner</li>
+                                        <li>Reflekter over eget digitale fotavtrykk</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Dubestemmer.no</li>
+                                <li>Nettvett.no</li>
+                            `;
+                            break;
+                        case 'Forstå konsekvenser av digitale fotavtrykk':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler forståelse for digitale fotavtrykk.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter konsekvenser av digitale fotavtrykk</li>
+                                        <li>Bruk Slettmeg.no til personvern</li>
+                                        <li>Lær om langtidseffekter</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Slettmeg.no</li>
+                                <li>Redd Barna - Nettvett</li>
+                            `;
+                            break;
+                        case 'Analysere virkningen av dataspill og sosiale medier på identitet, relasjoner og livsstil':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler kritisk forståelse for mediepåvirkning.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Analyser påvirkning av dataspill og sosiale medier</li>
+                                        <li>Bruk Ung.no til diskusjoner</li>
+                                        <li>Reflekter over egen bruk</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Ung.no</li>
+                                <li>Redd Barna - Nettvett</li>
+                            `;
+                            break;
+                        case 'Bruke digitale ressurser på en kritisk måte som fremmer egen læring':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler kritisk bruk av digitale ressurser.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Bruk digitale ressurser strategisk</li>
+                                        <li>Vurder kvalitet og relevans</li>
+                                        <li>Reflekter over egen læring</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Microsoft 365</li>
+                                <li>Google Workspace</li>
+                            `;
+                            break;
+                        case 'Utvikle strategier for håndtering av digital informasjonsstrøm':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene lærer å håndtere digital informasjonsstrøm.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Utvikle strategier for informasjonshåndtering</li>
+                                        <li>Bruk digitale verktøy til organisering</li>
+                                        <li>Lær å filtrere og prioritere informasjon</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Microsoft 365</li>
+                                <li>Google Workspace</li>
+                            `;
+                            break;
+                        case 'Diskutere hvordan teknologi påvirker samfunnet og hverdagen':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler forståelse for teknologis påvirkning.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter teknologis påvirkning</li>
+                                        <li>Bruk Teknologirådet - ressurser</li>
+                                        <li>Analyser endringer i hverdagen</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Teknologirådet - ressurser</li>
+                                <li>Medietilsynet - Barn og medier</li>
+                            `;
+                            break;
+                        case 'Reflektere over algoritmer og hvordan de påvirker informasjonen vi får':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler forståelse for algoritmers påvirkning.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter algoritmers rolle</li>
+                                        <li>Analyser søkeresultater og sosiale medier</li>
+                                        <li>Reflekter over personlig påvirkning</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Medietilsynet - Barn og medier</li>
+                                <li>Teknologirådet - ressurser</li>
+                            `;
+                            break;
+                        case 'Diskutere hvordan kunstig intelligens og KI-verktøy fungerer og hvilket potensial de har':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler forståelse for kunstig intelligens.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter KI og dens potensial</li>
+                                        <li>Bruk AI for Kids - ressurser</li>
+                                        <li>Utforsk KI-verktøy under veiledning</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>AI for Kids - ressurser</li>
+                                <li>ChatGPT for barn (med veiledning)</li>
+                            `;
+                            break;
+                        case 'Reflektere over digitale fotavtrykk og konsekvensene av disse':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler bevissthet om digitale fotavtrykk.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter konsekvenser av digitale fotavtrykk</li>
+                                        <li>Bruk Slettmeg.no til personvern</li>
+                                        <li>Reflekter over eget digitale fotavtrykk</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Slettmeg.no</li>
+                                <li>Redd Barna - Nettvett</li>
+                            `;
+                            break;
+                        case 'Vurdere sammenhengen mellom skjermtid og fysisk og psykisk helse':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler forståelse for skjermtid og helse.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter skjermtid og helse</li>
+                                        <li>Bruk Ung.no til diskusjoner</li>
+                                        <li>Reflekter over egen skjermtid</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Ung.no</li>
+                                <li>Redd Barna - Nettvett</li>
+                            `;
+                            break;
+                        case 'Analysere hvordan reklame og kommersielt innhold påvirker oss på nettet':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler kritisk forståelse for reklame og kommersielt innhold.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Analyser reklame og kommersielt innhold</li>
+                                        <li>Diskuter påvirkning og manipulasjon</li>
+                                        <li>Lær å gjenkjenne reklame</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Medietilsynet - Barn og medier</li>
+                                <li>Redd Barna - Nettvett</li>
+                            `;
+                            break;
+                        case 'Diskutere etiske problemstillinger knyttet til bruk av teknologi':
+                            modalDescription.innerHTML = `
+                                <div class="modal-section">
+                                    <h3>Hva:</h3>
+                                    <p>Elevene utvikler etisk bevissthet om teknologi.</p>
+                                </div>
+                                <div class="modal-section">
+                                    <h3>Hvordan:</h3>
+                                    <ul>
+                                        <li>Diskuter etiske problemstillinger</li>
+                                        <li>Bruk Teknologirådet - ressurser</li>
+                                        <li>Reflekter over egen bruk</li>
+                                    </ul>
+                                </div>
+                            `;
+                            modalResources.innerHTML = `
+                                <li>Teknologirådet - ressurser</li>
+                                <li>Medietilsynet - Barn og medier</li>
+                            `;
+                            break;
+                        default:
+                            modalDescription.innerHTML = `<p>Her kommer detaljert informasjon om hvordan man kan nå målet: ${goalText}</p>`;
+                            modalResources.innerHTML = goal.closest('tr').querySelector('td:last-child ul').innerHTML;
+                    }
+                } else {
+                    modalDescription.innerHTML = `<p>Her kommer detaljert informasjon om hvordan man kan nå målet: ${goalText}</p>`;
+                    modalResources.innerHTML = goal.closest('tr').querySelector('td:last-child ul').innerHTML;
+                }
                 
                 modal.style.display = 'block';
-                body.style.overflow = 'hidden'; // Forhindrer scrolling i bakgrunnen
+                body.style.overflow = 'hidden';
             });
         });
 
