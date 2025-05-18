@@ -13,7 +13,7 @@ const appInfo = {
                 'Utvikle lese- og skriveferdigheter'
             ],
             image: 'book-creator.png',
-            video: 'https://www.youtube.com/embed/example1'
+            video: 'https://www.youtube.com/embed/nd1neCcAU_k'
         },
         'scratch-jrscratch': {
             title: 'Scratch Jr./Scratch',
@@ -25,7 +25,7 @@ const appInfo = {
                 'Utforske matematikk og geometri'
             ],
             image: 'scratch.png',
-            video: 'https://www.youtube.com/embed/example2'
+            video: 'https://www.youtube.com/embed/D-nW4jvzRr8'
         },
         'garageband': {
             title: 'GarageBand',
@@ -37,7 +37,7 @@ const appInfo = {
                 'Utvikle rytme- og tonefølelse'
             ],
             image: 'garageband.png',
-            video: 'https://www.youtube.com/embed/example3'
+            video: 'https://www.youtube.com/embed/8sTGbWGrlds'
         },
         'microsoft-office-365': {
             title: 'Microsoft Office 365',
@@ -49,11 +49,11 @@ const appInfo = {
                 'Samarbeide på dokumenter'
             ],
             image: 'office365.png',
-            video: 'https://www.youtube.com/embed/example4'
+            video: 'https://www.youtube.com/embed/qPGZXf9fi0c'
         },
         'imoviefilmora-go': {
-            title: 'iMovie/Filmora Go',
-            description: 'iMovie og Filmora Go er videoredigeringsverktøy som lar elever lage og redigere videoer. Verktøyene er enkle å bruke og tilpasset skolebruk.',
+            title: 'iMovie',
+            description: 'iMovie er videoredigeringsverktøy som lar elever lage og redigere videoer. Verktøyet er enkelt å bruke og tilpasset skolebruk.',
             useCases: [
                 'Lage og redigere videoer',
                 'Lage dokumentarer',
@@ -61,7 +61,7 @@ const appInfo = {
                 'Utvikle fortellerferdigheter'
             ],
             image: 'imovie.png',
-            video: 'https://www.youtube.com/embed/example5'
+            video: 'https://www.youtube.com/embed/jhGG7ypIW_w'
         },
 
         // Samhandle og kommunisere
