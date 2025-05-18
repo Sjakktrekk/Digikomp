@@ -51,25 +51,6 @@ const vurderingsMetoder = [
     }
 ];
 
-// Funksjon for å generere kort
-function genererVurderingsKort() {
-    const container = document.querySelector('.vurderings-kort');
-    if (!container) return;
-
-    vurderingsMetoder.forEach(metode => {
-        const kort = document.createElement('div');
-        kort.className = 'kort';
-        kort.setAttribute('data-id', metode.id);
-        kort.innerHTML = `
-            <div class="kort-icon"><i class="${metode.ikon}"></i></div>
-            <h3>${metode.tittel}</h3>
-            <p>${metode.beskrivelse}</p>
-        `;
-        kort.addEventListener('click', () => visModal(metode));
-        container.appendChild(kort);
-    });
-}
-
 // Funksjon for å vise modal
 function visModal(metode) {
     const modal = document.createElement('div');
@@ -178,6 +159,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Initialiser når DOM er lastet
 document.addEventListener('DOMContentLoaded', () => {
-    genererVurderingsKort();
     initFaner();
 }); 
