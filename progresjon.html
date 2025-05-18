@@ -44,11 +44,22 @@
         .competence-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 30px 0;
+            margin-top: 0;
+            margin-bottom: 30px;
             background-color: var(--white);
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
+        }
+        
+        .competence-table caption {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            text-align: left;
+            margin-bottom: 15px;
+            padding: 5px 0;
+            caption-side: top;
         }
 
         .competence-table th {
@@ -88,6 +99,22 @@
             width: 30%;
             font-weight: 500;
             color: var(--secondary-color);
+            position: relative;
+            cursor: help;
+        }
+        
+        .competence-area::after {
+            content: " \f059";
+            font-family: "Font Awesome 5 Free";
+            font-size: 0.8em;
+            opacity: 0.6;
+            margin-left: 5px;
+            vertical-align: top;
+        }
+        
+        .competence-area:hover {
+            background-color: var(--light-gray);
+            transition: background-color 0.3s ease;
         }
 
         .lk20-reference {
@@ -122,6 +149,12 @@
                 font-weight: 500;
                 color: var(--secondary-color);
                 margin-bottom: 8px;
+            }
+            
+            .competence-table caption {
+                font-size: 1.5rem;
+                padding: 10px;
+                text-align: center;
             }
 
             .competence-area {
@@ -250,13 +283,36 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Fjerner ikke lenger relevant CSS */
+        .year-header {
+            display: none; /* Vi holder CSS-en i tilfelle det finnes referanser til den andre steder */
+        }
+        
+        .year-indicator {
+            display: none; /* Vi holder CSS-en i tilfelle det finnes referanser til den andre steder */
+        }
+        
+        /* Styling for logo-lenken */
+        .logo-container a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-container a:hover {
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body class="progresjon">
     <header>
         <div class="logo-container">
-            <img src="logo.png" alt="Kristiansund kommune logo" class="logo">
-            <h1>Digital kompetanseplan</h1>
+            <a href="index.html" title="Gå til forsiden">
+                <img src="logo.png" alt="Kristiansund kommune logo" class="logo">
+                <h1>Digital kompetanseplan</h1>
+            </a>
         </div>
         <nav id="main-nav"></nav>
         <button id="menu-toggle" class="menu-toggle">
@@ -269,7 +325,7 @@
             <section class="hero">
                 <div class="container">
                     <h2>Digitale ferdigheter etter årstrinn</h2>
-                    <p>Her finner du en oversikt over kompetansemålene som elevene skal oppnå innen utgangen av hvert hovedtrinn når det gjelder digital kompetanse. Velg årstrinn under for å se detaljert informasjon. Du kan også trykke på kompetansemålene for å se mer detaljert informasjon.</p>
+                    <p>Her finner du en oversikt over ferdighetsmålene elevene skal oppnå innen utgangen av 2. 4. og 7. årstrinn.. Velg årstrinn under for å se målene. Du kan også trykke på ferdighetsmålene for å se mer detaljert informasjon knyttet til målene. Målene er delt inn i fem hovedområder som til sammen dekker de ulike aspektene av elevenes digitale ferdigheter.</p>
                 </div>
             </section>
 
@@ -282,13 +338,8 @@
 
                 <!-- 2. årstrinn -->
                 <div id="trinn2" class="tab-content active trinn2">
-                    <div class="year-header">
-                        <h2 class="year-title">2. årstrinn</h2>
-                        <div class="year-indicator"></div>
-                    </div>
-                    <p>Her finner du en oversikt over kompetansemålene som elevene skal oppnå innen utgangen av 2. årstrinn når det gjelder digital kompetanse. Disse målene er delt inn i fem hovedområder som til sammen dekker de ulike aspektene av elevenes digitale ferdigheter.</p>
-                    
                     <table class="competence-table">
+                        <caption class="year-title">2. årstrinn</caption>
                         <thead>
                             <tr>
                                 <th>Elevens digitale kompetanse</th>
@@ -297,18 +348,39 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="competence-area" data-title="Elevens digitale kompetanse">Skape og produsere</td>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse" title="Bruke og forstå innebærer å kunne bruke og navigere på digitale ressurser i og utenfor nettverk og ivareta informasjons- og datasikkerhet. Digitale ressurser kan bl. a. være digitalt utstyr, programvare og digitale måleinstrumenter. Videre innebærer det å følge digitale formkrav for å understreke og formidle budskap ved bruk av effekter, bilder, lyd, illustrasjoner, tabeller, overskrifter og punkter.">Bruke og forstå</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Huske eget brukernavn og passord</li>
+                                        <li>Logge inn og bruke digitale læremidler</li>
+                                        <li>Behandle enheten på en trygg og god måte (iPad-regler)</li>
+                                        <li>Finne frem på iPaden sin (finne riktig app, mappe, oppgave, dokument og lekse)</li>
+                                        <li>Lese enkle digitale tekster</li>
+                                        <li>Lytte til og samtale om autentiske språkmodeller</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse" title="Finne og behandle innebærer å tilegne seg, behandle, tolke og vurdere informasjon fra digitale kilder, utøve kildekritikk og bruke kildehenvisning. Informasjon fra digitale kilder kan være informasjon fra tekst, lyd, bilde, video, symboler, interaktive elementer eller rådata fra registreringer og observasjoner.">Finne og behandle</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Enkle søk på internett</li>
+                                        <li>Samtale om opphavsrett</li>
+                                        <li>Referere muntlig til kilder ved søk (si hvor bildet er hentet fra)</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse" title="Produsere og bearbeide innebærer å være kreativ og skapende med bruk av digitale ressurser. Dette innebærer å lage digitale produkter ved hjelp av digitale ressurser, enten ved nyskaping eller videreutvikling og gjenbruk.">Produsere og bearbeide</td>
                                 <td data-title="Mål for opplæringen">
                                     <ul>
                                         <li>Lese inn setninger og enkle tekster</li>
                                         <li>Skape et produkt som kombinerer bilde og tekst</li>
                                         <li>Skape fortellinger ved hjelp av digitale verktøy</li>
                                         <li>Skrive setninger og enkle tekster med tastatur og lydstøtte</li>
-                                        <li>Lytte til og samtale om autentiske språkmodeller</li>
                                         <li>Ta bilde og video</li>
                                         <li>Enkel redigering av bilde</li>
                                         <li>Produsere et bilde ved hjelp av tegning på en digital app</li>
-                                        <li>Enkle søk på internett</li>
                                         <li>Lagre digitale dokumenter med navn, som du senere kan finne tilbake til</li>
                                         <li>Leke med musikkens grunnelementer og lage en enkel musikalsk komposisjon</li>
                                         <li>Leke seg med enkel programmering ved hjelp av fysiske objekter eller blokkprogrammering</li>
@@ -316,7 +388,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="competence-area" data-title="Elevens digitale kompetanse">Samhandle og kommunisere</td>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse" title="Kommunisere og samhandle innebærer å kunne bruke digitale ressurser for kommunikasjon og samhandling. Digital samhandling innebærer bruk av digitale ressurser til planlegging, organisering og gjennomføring av læringsarbeid sammen med andre, for eksempel gjennom samskriving og deling.">Kommunisere og samhandle</td>
                                 <td data-title="Mål for opplæringen">
                                     <ul>
                                         <li>Dele digitalt arbeid med lærer</li>
@@ -327,32 +399,10 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="competence-area" data-title="Elevens digitale kompetanse">Kildebruk</td>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse" title="Utøve digital dømmekraft innebærer å følge regler for personvern og vise hensyn til andre på nett. Det handler om å bruke strategier for å unngå uønskede hendelser og å vise evne til etisk refleksjon og vurdering av egen rolle på nett og i sosiale medier.">Utøve digital dømmekraft</td>
                                 <td data-title="Mål for opplæringen">
                                     <ul>
                                         <li>Spørre om lov før du tar bilde eller video av medelev eller andre</li>
-                                        <li>Referere muntlig til kilder ved søk (si hvor bildet er hentet fra)</li>
-                                        <li>Samtale om opphavsrett</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="competence-area" data-title="Elevens digitale kompetanse">Digital livsmestring</td>
-                                <td data-title="Mål for opplæringen">
-                                    <ul>
-                                        <li>Huske eget brukernavn og passord</li>
-                                        <li>Logge inn og bruke digitale læremidler</li>
-                                        <li>Gjennomføre enkle søk i søkeprogram</li>
-                                        <li>Lese enkle digitale tekster</li>
-                                        <li>Behandle enheten på en trygg og god måte (iPad-regler)</li>
-                                        <li>Finne frem på iPaden sin (finne riktig app, mappe, oppgave, dokument og lekse)</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="competence-area" data-title="Elevens digitale kompetanse">Digital bevissthet</td>
-                                <td data-title="Mål for opplæringen">
-                                    <ul>
                                         <li>Samtale om hva vi bruker iPad til på skolen og hjemme</li>
                                         <li>Bli kjent med å bruke ulike digitale verktøy for læring</li>
                                     </ul>
@@ -364,13 +414,8 @@
 
                 <!-- 4. årstrinn -->
                 <div id="trinn4" class="tab-content trinn4">
-                    <div class="year-header">
-                        <h2 class="year-title">4. årstrinn</h2>
-                        <div class="year-indicator"></div>
-                    </div>
-                    <p>Her finner du en oversikt over kompetansemålene som elevene skal oppnå innen utgangen av 4. årstrinn når det gjelder digital kompetanse. Disse målene videreutvikler ferdighetene fra 2. årstrinn og legger grunnlag for en dypere digital forståelse.</p>
-                    
                     <table class="competence-table">
+                        <caption class="year-title">4. årstrinn</caption>
                         <thead>
                             <tr>
                                 <th>Elevens digitale kompetanse</th>
@@ -379,14 +424,36 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="competence-area" data-title="Elevens digitale kompetanse">Skape og produsere</td>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse" title="Bruke og forstå innebærer å kunne bruke og navigere på digitale ressurser i og utenfor nettverk og ivareta informasjons- og datasikkerhet. Digitale ressurser kan bl. a. være digitalt utstyr, programvare og digitale måleinstrumenter. Videre innebærer det å følge digitale formkrav for å understreke og formidle budskap ved bruk av effekter, bilder, lyd, illustrasjoner, tabeller, overskrifter og punkter.">Bruke og forstå</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Lese digitale sammensatte tekster</li>
+                                        <li>Bruke tale til tekst på iPaden (dikter-funksjon) ved behov</li>
+                                        <li>Kjenne til les opp-funksjonen i apper og engasjerende leser i Office</li>
+                                        <li>Bruke ulike digitale verktøy for læring</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse" title="Finne og behandle innebærer å tilegne seg, behandle, tolke og vurdere informasjon fra digitale kilder, utøve kildekritikk og bruke kildehenvisning. Informasjon fra digitale kilder kan være informasjon fra tekst, lyd, bilde, video, symboler, interaktive elementer eller rådata fra registreringer og observasjoner.">Finne og behandle</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Gjøre funksjonelle søk</li>
+                                        <li>Søke etter informasjon i ulike kilder og vurdere hvor nyttig informasjonen er</li>
+                                        <li>Samtale om regler og normer for opphavsrett</li>
+                                        <li>Bruke bilder med Creative Commons-lisens</li>
+                                        <li>Bruke nettsteder med lovlige bilder</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse" title="Produsere og bearbeide innebærer å være kreativ og skapende med bruk av digitale ressurser. Dette innebærer å lage digitale produkter ved hjelp av digitale ressurser, enten ved nyskaping eller videreutvikling og gjenbruk.">Produsere og bearbeide</td>
                                 <td data-title="Mål for opplæringen">
                                     <ul>
                                         <li>Lese inn tekster</li>
                                         <li>Skrive tekster med tastatur</li>
                                         <li>Utforske, lage og presentere faglig innhold ved bruk av ulike digitale ressurser</li>
                                         <li>Kombinere ulike uttrykksformer i sammensatte tekster</li>
-                                        <li>Gjøre funksjonelle søk</li>
                                         <li>Redigere tekst og bilder</li>
                                         <li>Eksperimentere med rytmer, melodier og andre grunnelementer, og sette sammen mønstre til komposisjoner</li>
                                         <li>Bruke digitale ressurser til å utforske språket og utøve med andre</li>
@@ -395,49 +462,27 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="competence-area" data-title="Elevens digitale kompetanse">Samhandle og kommunisere</td>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse" title="Kommunisere og samhandle innebærer å kunne bruke digitale ressurser for kommunikasjon og samhandling. Digital samhandling innebærer bruk av digitale ressurser til planlegging, organisering og gjennomføring av læringsarbeid sammen med andre, for eksempel gjennom samskriving og deling.">Kommunisere og samhandle</td>
                                 <td data-title="Mål for opplæringen">
                                     <ul>
                                         <li>Dele digitalt arbeid med medelever og lærer</li>
                                         <li>Presentere digitalt</li>
-                                        <li>Samtale om og øve på hvordan man kommuniserer på chatter, meldinger og sosiale medier (kritisk tenkning)</li>
                                         <li>Delta i en digital samtale med lærer inkludert</li>
                                         <li>Samarbeide i digitale læringsspill</li>
                                     </ul>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="competence-area" data-title="Elevens digitale kompetanse">Kildebruk</td>
-                                <td data-title="Mål for opplæringen">
-                                    <ul>
-                                        <li>Søke etter informasjon i ulike kilder og vurdere hvor nyttig informasjonen er</li>
-                                        <li>Samtale om regler og normer for opphavsrett</li>
-                                        <li>Samtale om deling og beskyttelse av informasjon</li>
-                                        <li>Bruke bilder med Creative Commons-lisens</li>
-                                        <li>Bruke nettsteder med lovlige bilder</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="competence-area" data-title="Elevens digitale kompetanse">Digital livsmestring</td>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse" title="Utøve digital dømmekraft innebærer å følge regler for personvern og vise hensyn til andre på nett. Det handler om å bruke strategier for å unngå uønskede hendelser og å vise evne til etisk refleksjon og vurdering av egen rolle på nett og i sosiale medier.">Utøve digital dømmekraft</td>
                                 <td data-title="Mål for opplæringen">
                                     <ul>
                                         <li>Samtale om regler og normer for personvern, deling og beskyttelse av informasjon og om hva det vil si å bruke dømmekraft i digital samhandling</li>
                                         <li>Samtale om digital livsmestring i sosiale medier</li>
                                         <li>Samtale om aldersgrenser</li>
                                         <li>Samtale om og øve på "god oppførsel" på nett</li>
-                                        <li>Lese digitale sammensatte tekster</li>
-                                        <li>Bruke tale til tekst på iPaden (dikter-funksjon) ved behov</li>
-                                        <li>Kjenne til les opp-funksjonen i apper og engasjerende leser i Office</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="competence-area" data-title="Elevens digitale kompetanse">Digital bevissthet</td>
-                                <td data-title="Mål for opplæringen">
-                                    <ul>
+                                        <li>Samtale om og øve på hvordan man kommuniserer på chatter, meldinger og sosiale medier (kritisk tenkning)</li>
+                                        <li>Samtale om deling og beskyttelse av informasjon</li>
                                         <li>Samtale om hva det vil si å bruke dømmekraft i digital samhandling</li>
-                                        <li>Bruke ulike digitale verktøy for læring</li>
                                         <li>Samtale om hva sosiale medier er, og hva disse kan brukes til</li>
                                         <li>Samtale om hva og hvor mye vi bruker digitale enheter på skolen og hjemme</li>
                                     </ul>
@@ -449,13 +494,8 @@
 
                 <!-- 7. årstrinn -->
                 <div id="trinn7" class="tab-content trinn7">
-                    <div class="year-header">
-                        <h2 class="year-title">7. årstrinn</h2>
-                        <div class="year-indicator"></div>
-                    </div>
-                    <p>Her finner du en oversikt over kompetansemålene som elevene skal oppnå innen utgangen av 7. årstrinn når det gjelder digital kompetanse. Disse målene bygger på kompetanse fra tidligere årstrinn og forbereder elevene på mer avansert digital læring i ungdomsskolen.</p>
-                    
                     <table class="competence-table">
+                        <caption class="year-title">7. årstrinn</caption>
                         <thead>
                             <tr>
                                 <th>Elevens digitale kompetanse</th>
@@ -464,65 +504,65 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="competence-area" data-title="Elevens digitale kompetanse">Skape og produsere</td>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse" title="Bruke og forstå innebærer å kunne bruke og navigere på digitale ressurser i og utenfor nettverk og ivareta informasjons- og datasikkerhet. Digitale ressurser kan bl. a. være digitalt utstyr, programvare og digitale måleinstrumenter. Videre innebærer det å følge digitale formkrav for å understreke og formidle budskap ved bruk av effekter, bilder, lyd, illustrasjoner, tabeller, overskrifter og punkter.">Bruke og forstå</td>
                                 <td data-title="Mål for opplæringen">
                                     <ul>
                                         <li>Beherske touch-metoden</li>
-                                        <li>Utforske, lage og presentere faglig innhold ved bruk av ulike digitale ressurser</li>
-                                        <li>Lage sammensatte tekster (tekst, lyd, bilde, video) og publisere og dele dem digitalt</li>
-                                        <li>Bruke programmering til å skape spill og interaktive fortellinger</li>
-                                        <li>Designe og lage digitale spill og animasjoner med ulike figurer og betingelser</li>
-                                        <li>Lage egne databaser og strukturere informasjon i dem</li>
+                                        <li>Bruke digitale ressurser på en kritisk måte som fremmer egen læring</li>
                                         <li>Utforske teknologiske systemer, forklare og beskrive hvordan de virker</li>
-                                        <li>Bruke regneark til å organisere og presentere data</li>
                                         <li>Bruke digitale verktøy for å visualisere og simulere faglig innhold</li>
                                     </ul>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="competence-area" data-title="Elevens digitale kompetanse">Samhandle og kommunisere</td>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse" title="Finne og behandle innebærer å tilegne seg, behandle, tolke og vurdere informasjon fra digitale kilder, utøve kildekritikk og bruke kildehenvisning. Informasjon fra digitale kilder kan være informasjon fra tekst, lyd, bilde, video, symboler, interaktive elementer eller rådata fra registreringer og observasjoner.">Finne og behandle</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Vurdere kilders troverdighet og relevans og velge kilder på en reflektert måte</li>
+                                        <li>Oppgi kilder etter gjeldende regler</li>
+                                        <li>Forklare hvordan algoritmer påvirker informasjonen vi får på nett</li>
+                                        <li>Skille mellom fakta, meninger og kommersielt innhold på nett</li>
+                                        <li>Gjenkjenne falske nyheter og manipulert innhold</li>
+                                        <li>Utvikle strategier for håndtering av digital informasjonsstrøm</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse" title="Produsere og bearbeide innebærer å være kreativ og skapende med bruk av digitale ressurser. Dette innebærer å lage digitale produkter ved hjelp av digitale ressurser, enten ved nyskaping eller videreutvikling og gjenbruk.">Produsere og bearbeide</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
+                                        <li>Utforske, lage og presentere faglig innhold ved bruk av ulike digitale ressurser</li>
+                                        <li>Lage sammensatte tekster (tekst, lyd, bilde, video) og publisere og dele dem digitalt</li>
+                                        <li>Bruke programmering til å skape spill og interaktive fortellinger</li>
+                                        <li>Designe og lage digitale spill og animasjoner med ulike figurer og betingelser</li>
+                                        <li>Lage egne databaser og strukturere informasjon i dem</li>
+                                        <li>Bruke regneark til å organisere og presentere data</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse" title="Kommunisere og samhandle innebærer å kunne bruke digitale ressurser for kommunikasjon og samhandling. Digital samhandling innebærer bruk av digitale ressurser til planlegging, organisering og gjennomføring av læringsarbeid sammen med andre, for eksempel gjennom samskriving og deling.">Kommunisere og samhandle</td>
                                 <td data-title="Mål for opplæringen">
                                     <ul>
                                         <li>Samarbeide digitalt om alle deler av en arbeidsprosess</li>
                                         <li>Planlegge og gjennomføre digitale presentasjoner for ulike målgrupper</li>
                                         <li>Reflektere over og diskutere hvordan kommunikasjon påvirkes av digital teknologi</li>
                                         <li>Formulere og etterprøve problemstillinger ved bruk av digitale verktøy og samarbeidsplattformer</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="competence-area" data-title="Elevens digitale kompetanse" title="Utøve digital dømmekraft innebærer å følge regler for personvern og vise hensyn til andre på nett. Det handler om å bruke strategier for å unngå uønskede hendelser og å vise evne til etisk refleksjon og vurdering av egen rolle på nett og i sosiale medier.">Utøve digital dømmekraft</td>
+                                <td data-title="Mål for opplæringen">
+                                    <ul>
                                         <li>Vite hvordan digital kommunikasjon påvirker relasjoner og identitet</li>
                                         <li>Diskutere konsekvenser av digital mobbing og deling på nett</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="competence-area" data-title="Elevens digitale kompetanse">Kildebruk</td>
-                                <td data-title="Mål for opplæringen">
-                                    <ul>
-                                        <li>Vurdere kilders troverdighet og relevans og velge kilder på en reflektert måte</li>
-                                        <li>Oppgi kilder etter gjeldende regler</li>
-                                        <li>Forklare hvordan algoritmer påvirker informasjonen vi får på nett</li>
                                         <li>Diskutere hva opphavsrett og personvern betyr i digital sammenheng</li>
-                                        <li>Skille mellom fakta, meninger og kommersielt innhold på nett</li>
-                                        <li>Gjenkjenne falske nyheter og manipulert innhold</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="competence-area" data-title="Elevens digitale kompetanse">Digital livsmestring</td>
-                                <td data-title="Mål for opplæringen">
-                                    <ul>
                                         <li>Vurdere risiko og håndtere identitet og privatliv i digitale medier</li>
                                         <li>Diskutere fordeler og utfordringer ved digital kommunikasjon</li>
                                         <li>Reflektere over egen og andres digitale identitet</li>
                                         <li>Forstå konsekvenser av digitale fotavtrykk</li>
                                         <li>Analysere virkningen av dataspill og sosiale medier på identitet, relasjoner og livsstil</li>
-                                        <li>Bruke digitale ressurser på en kritisk måte som fremmer egen læring</li>
-                                        <li>Utvikle strategier for håndtering av digital informasjonsstrøm</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="competence-area" data-title="Elevens digitale kompetanse">Digital bevissthet</td>
-                                <td data-title="Mål for opplæringen">
-                                    <ul>
                                         <li>Diskutere hvordan teknologi påvirker samfunnet og hverdagen</li>
                                         <li>Reflektere over algoritmer og hvordan de påvirker informasjonen vi får</li>
                                         <li>Diskutere hvordan kunstig intelligens og KI-verktøy fungerer og hvilket potensial de har</li>

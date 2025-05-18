@@ -11,8 +11,10 @@
 <body class="resources">
     <header>
         <div class="logo-container">
-            <img src="logo.png" alt="Kristiansund kommune logo" class="logo">
-            <h1>Digital kompetanseplan</h1>
+            <a href="index.html" title="Gå til forsiden">
+                <img src="logo.png" alt="Kristiansund kommune logo" class="logo">
+                <h1>Digital kompetanseplan</h1>
+            </a>
         </div>
         <nav id="main-nav"></nav>
         <button id="menu-toggle" class="menu-toggle">
@@ -32,28 +34,29 @@
             </section>
             
             <div class="tabs">
-                <button class="tab-button active" data-tab="skape-og-produsere">
-                    <i class="fas fa-paint-brush"></i> Skape og produsere
+                <button class="tab-button active" data-tab="produsere-og-bearbeide">
+                    <i class="fas fa-paint-brush"></i> Produsere og bearbeide
                 </button>
-                <button class="tab-button" data-tab="samhandle-og-kommunisere">
-                    <i class="fas fa-comments"></i> Samhandle og kommunisere
+                <button class="tab-button" data-tab="kommunisere-og-samhandle">
+                    <i class="fas fa-comments"></i> Kommunisere og samhandle
                 </button>
-                <button class="tab-button" data-tab="kildebruk-og-kildekritikk">
-                    <i class="fas fa-book"></i> Kildebruk og kildekritikk
+                <button class="tab-button" data-tab="finne-og-behandle">
+                    <i class="fas fa-search"></i> Finne og behandle
                 </button>
-                <button class="tab-button" data-tab="digital-livsmestring">
-                    <i class="fas fa-heart"></i> Digital livsmestring
+                <button class="tab-button" data-tab="bruke-og-forstaa">
+                    <i class="fas fa-laptop"></i> Bruke og forstå
                 </button>
-                <button class="tab-button" data-tab="digital-bevissthet">
-                    <i class="fas fa-brain"></i> Digital bevissthet
+                <button class="tab-button" data-tab="utove-digital-dommekraft">
+                    <i class="fas fa-shield-alt"></i> Utøve digital dømmekraft
                 </button>
                 <button class="tab-button" data-tab="tilpasset-opplaering">
                     <i class="fas fa-universal-access"></i> Tilpasset opplæring
                 </button>
             </div>
 
-            <section id="skape-og-produsere" class="resource-section active">
-                <h2>Skape og produsere</h2>
+            <section id="produsere-og-bearbeide" class="resource-section active">
+                <h2>Produsere og bearbeide</h2>
+                <p>Produsere og bearbeide innebærer å være kreativ og skapende med bruk av digitale ressurser. Dette innebærer å lage digitale produkter ved hjelp av digitale ressurser, enten ved nyskaping eller videreutvikling og gjenbruk.</p>
                 <div class="resource-grid">
                     <div class="resource-card">
                         <div class="resource-card-header">
@@ -85,8 +88,9 @@
                 </div>
             </section>
 
-            <section id="samhandle-og-kommunisere" class="resource-section">
-                <h2>Samhandle og kommunisere</h2>
+            <section id="kommunisere-og-samhandle" class="resource-section">
+                <h2>Kommunisere og samhandle</h2>
+                <p>Kommunisere og samhandle innebærer å kunne bruke digitale ressurser for kommunikasjon og samhandling. Digital samhandling innebærer bruk av digitale ressurser til planlegging, organisering og gjennomføring av læringsarbeid sammen med andre, for eksempel gjennom samskriving og deling.</p>
                 <div class="resource-grid">
                     <div class="resource-card">
                         <div class="resource-card-header">
@@ -117,17 +121,19 @@
                 </div>
             </section>
 
-            <section id="kildebruk-og-kildekritikk" class="resource-section">
-                <h2>Kildebruk og kildekritikk</h2>
+            <section id="finne-og-behandle" class="resource-section">
+                <h2>Finne og behandle</h2>
+                <p>Finne og behandle innebærer å tilegne seg, behandle, tolke og vurdere informasjon fra digitale kilder, utøve kildekritikk og bruke kildehenvisning. Informasjon fra digitale kilder kan være informasjon fra tekst, lyd, bilde, video, symboler, interaktive elementer eller rådata fra registreringer og observasjoner.</p>
                 <div class="resource-grid">
                     <div class="resource-card">
                         <div class="resource-card-header">
                             <i class="fas fa-paint-brush"></i> Verktøy
                         </div>
                         <div class="resource-card-body">
-                            <p>Verktøy for kildekritikk og kildebruk:</p>
+                            <p>Verktøy for informasjonssøk og kildebruk:</p>
                             <ul class="resource-list">
-                                <!-- Tom liste for verktøy -->
+                                <li data-app="kiddle"><i class="fas fa-check-circle"></i> <strong>Kiddle:</strong> Søkemotor tilpasset barn</li>
+                                <li data-app="kvasir"><i class="fas fa-check-circle"></i> <strong>Kvasir:</strong> Norsk søkemotor</li>
                             </ul>
                         </div>
                     </div>
@@ -139,25 +145,29 @@
                             <p>Ressurser for kildekritikk og kildebruk:</p>
                             <ul class="resource-list">
                                 <li data-app="kildekritikk-no"><i class="fas fa-check-circle"></i> <strong>Kildekritikk.no:</strong> Læringsressurs om kildekritikk</li>
-                                <li data-app="dubestemmer-no"><i class="fas fa-check-circle"></i> <strong>Dubestemmer.no:</strong> Undervisningsopplegg om nettvett</li>
-                                <li data-app="kiddle"><i class="fas fa-check-circle"></i> <strong>Kiddle:</strong> Søkemotor tilpasset barn</li>
+                                <li data-app="snl-no"><i class="fas fa-check-circle"></i> <strong>SNL.no:</strong> Store norske leksikon - pålitelig kilde</li>
+                                <li data-app="faktisk-no"><i class="fas fa-check-circle"></i> <strong>Faktisk.no:</strong> Faktasjekk av påstander i offentligheten</li>
+                                <li data-app="kildekritikk-forside"><i class="fas fa-check-circle"></i> <strong>Kildekompasset:</strong> Verktøy for kildebruk og referanseteknikk</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="digital-livsmestring" class="resource-section">
-                <h2>Digital livsmestring</h2>
+            <section id="bruke-og-forstaa" class="resource-section">
+                <h2>Bruke og forstå</h2>
+                <p>Bruke og forstå innebærer å kunne bruke og navigere på digitale ressurser i og utenfor nettverk og ivareta informasjons- og datasikkerhet. Digitale ressurser kan bl. a. være digitalt utstyr, programvare og digitale måleinstrumenter. Videre innebærer det å følge digitale formkrav for å understreke og formidle budskap ved bruk av effekter, bilder, lyd, illustrasjoner, tabeller, overskrifter og punkter.</p>
                 <div class="resource-grid">
                     <div class="resource-card">
                         <div class="resource-card-header">
                             <i class="fas fa-paint-brush"></i> Verktøy
                         </div>
                         <div class="resource-card-body">
-                            <p>Verktøy for digital livsmestring:</p>
+                            <p>Verktøy for bruk og forståelse av digitale ressurser:</p>
                             <ul class="resource-list">
-                                <!-- Tom liste for verktøy -->
+                                <li data-app="touch-typing"><i class="fas fa-check-circle"></i> <strong>Typing.com:</strong> Øvelser i touch-metoden</li>
+                                <li data-app="claroread"><i class="fas fa-check-circle"></i> <strong>ClaroRead:</strong> Les opp-verktøy for tekstbehandling</li>
+                                <li data-app="geogebra"><i class="fas fa-check-circle"></i> <strong>GeoGebra:</strong> Verktøy for matematisk visualisering</li>
                             </ul>
                         </div>
                     </div>
@@ -166,41 +176,45 @@
                             <i class="fas fa-globe"></i> Nettressurser
                         </div>
                         <div class="resource-card-body">
-                            <p>Ressurser for digital livsmestring:</p>
+                            <p>Ressurser for digitale ferdigheter og datasikkerhet:</p>
                             <ul class="resource-list">
-                                <li data-app="nettvett-no"><i class="fas fa-check-circle"></i> <strong>Nettvett.no:</strong> Råd om digital dømmekraft</li>
+                                <li data-app="iktplan-no"><i class="fas fa-check-circle"></i> <strong>Iktplan.no:</strong> Digitale ferdigheter i skolen</li>
+                                <li data-app="nettvett-no"><i class="fas fa-check-circle"></i> <strong>Nettvett.no:</strong> Veiledninger om digital sikkerhet</li>
+                                <li data-app="digitallkom"><i class="fas fa-check-circle"></i> <strong>DigitallKompetanse.no:</strong> Ressurser om digitale verktøy</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="utove-digital-dommekraft" class="resource-section">
+                <h2>Utøve digital dømmekraft</h2>
+                <p>Utøve digital dømmekraft innebærer å følge regler for personvern og vise hensyn til andre på nett. Det handler om å bruke strategier for å unngå uønskede hendelser og å vise evne til etisk refleksjon og vurdering av egen rolle på nett og i sosiale medier.</p>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <div class="resource-card-header">
+                            <i class="fas fa-paint-brush"></i> Verktøy
+                        </div>
+                        <div class="resource-card-body">
+                            <p>Verktøy for digital dømmekraft:</p>
+                            <ul class="resource-list">
+                                <li data-app="mentimeter"><i class="fas fa-check-circle"></i> <strong>Mentimeter:</strong> Anonyme innspill og refleksjon</li>
+                                <li data-app="digiped"><i class="fas fa-check-circle"></i> <strong>DigiPed:</strong> Øvelser i kildekritikk og nettvett</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-card-header">
+                            <i class="fas fa-globe"></i> Nettressurser
+                        </div>
+                        <div class="resource-card-body">
+                            <p>Ressurser for digital dømmekraft:</p>
+                            <ul class="resource-list">
+                                <li data-app="datatilsynet"><i class="fas fa-check-circle"></i> <strong>Datatilsynet:</strong> Undervisningsopplegg om personvern</li>
+                                <li data-app="dubestemmer-no"><i class="fas fa-check-circle"></i> <strong>Dubestemmer.no:</strong> Undervisningsopplegg om nettvett</li>
                                 <li data-app="barnevakten-no"><i class="fas fa-check-circle"></i> <strong>Barnevakten.no:</strong> Informasjon om barn og medier</li>
                                 <li data-app="slettmeg-no"><i class="fas fa-check-circle"></i> <strong>Slettmeg.no:</strong> Informasjon om personvern</li>
                                 <li data-app="medietilsynet"><i class="fas fa-check-circle"></i> <strong>Medietilsynet:</strong> Ressurser om barn og medier</li>
-                                <li data-app="iktplan-no"><i class="fas fa-check-circle"></i> <strong>Iktplan.no:</strong> Digitale ferdigheter i skolen</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="digital-bevissthet" class="resource-section">
-                <h2>Digital bevissthet</h2>
-                <div class="resource-grid">
-                    <div class="resource-card">
-                        <div class="resource-card-header">
-                            <i class="fas fa-paint-brush"></i> Verktøy
-                        </div>
-                        <div class="resource-card-body">
-                            <p>Verktøy for digital bevissthet:</p>
-                            <ul class="resource-list">
-                                <!-- Tom liste for verktøy -->
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="resource-card">
-                        <div class="resource-card-header">
-                            <i class="fas fa-globe"></i> Nettressurser
-                        </div>
-                        <div class="resource-card-body">
-                            <p>Ressurser for digital bevissthet:</p>
-                            <ul class="resource-list">
-                                <li data-app="datatilsynet"><i class="fas fa-check-circle"></i> <strong>Datatilsynet:</strong> Undervisningsopplegg om personvern</li>
                                 <li data-app="tenk-kritisk-no"><i class="fas fa-check-circle"></i> <strong>Tenk-kritisk.no:</strong> Ressurser om kritisk tenkning</li>
                                 <li data-app="nrk-skole"><i class="fas fa-check-circle"></i> <strong>NRK Skole:</strong> Undervisningsfilmer om digitalisering</li>
                                 <li data-app="teknologiradet"><i class="fas fa-check-circle"></i> <strong>Teknologirådet:</strong> Informasjon om teknologiutvikling</li>
@@ -212,6 +226,7 @@
 
             <section id="tilpasset-opplaering" class="resource-section">
                 <h2>Tilpasset opplæring</h2>
+                <p>Tilpasset opplæring handler om å tilrettelegge og differensiere bruken av digitale verktøy og ressurser for å møte ulike elevers behov for støtte i læringsprosessen.</p>
                 <div class="resource-grid">
                     <div class="resource-card">
                         <div class="resource-card-header">
@@ -222,6 +237,8 @@
                             <ul class="resource-list">
                                 <li data-app="lingdyslingright"><i class="fas fa-check-circle"></i> <strong>Lingdys/Lingright:</strong> Skriveverktøy for elever med lese- og skrivevansker</li>
                                 <li data-app="intowords"><i class="fas fa-check-circle"></i> <strong>Intowords:</strong> Lese- og skrivestøtte</li>
+                                <li data-app="appwriter"><i class="fas fa-check-circle"></i> <strong>AppWriter:</strong> Skrive- og lesestøtte med ordforslag</li>
+                                <li data-app="cd-ord"><i class="fas fa-check-circle"></i> <strong>CD-ORD:</strong> Støtte for lesing og skriving</li>
                             </ul>
                         </div>
                     </div>
@@ -234,6 +251,7 @@
                             <ul class="resource-list">
                                 <li data-app="statped-no"><i class="fas fa-check-circle"></i> <strong>Statped.no:</strong> Ressurser for spesialpedagogikk</li>
                                 <li data-app="nettbrett-i-spesialundervisning"><i class="fas fa-check-circle"></i> <strong>Nettbrett i spesialundervisning:</strong> Tilpassede apper</li>
+                                <li data-app="udir-tilpasset"><i class="fas fa-check-circle"></i> <strong>Udir.no/tilpasset:</strong> Veiledning om tilpasset opplæring</li>
                             </ul>
                         </div>
                     </div>

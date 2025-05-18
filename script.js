@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (targetElement) {
                 const headerHeight = document.querySelector('header').offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                // Legg til ekstra 20px padding for å sikre at overskriften synes godt
+                const extraPadding = 20;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - extraPadding;
                 
                 window.scrollTo({
                     top: targetPosition,
@@ -17,6 +19,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // Håndterer scroll ved sideinnlasting med anker (f.eks. index.html#maal)
+    if (window.location.hash) {
+        // Vent litt så siden får lastet ferdig
+        setTimeout(function() {
+            const targetId = window.location.hash;
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const extraPadding = 20;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - extraPadding;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }, 300);
+    }
 
     // Mobil meny
     const menuToggle = document.getElementById('menu-toggle');
