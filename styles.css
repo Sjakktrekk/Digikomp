@@ -5,6 +5,22 @@
     box-sizing: border-box;
 }
 
+/* Skip link for tastaturnavigasjon */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
 :root {
     --primary-color: #2196f3;
     --secondary-color: #00bcd4;
@@ -288,15 +304,6 @@ nav a:hover {
 section {
     margin-bottom: 60px;
     position: relative;
-}
-
-section:not(.hero)::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 4px;
-    background: linear-gradient(to right, var(--primary-color), transparent);
-    margin: 40px 0;
 }
 
 section h2 {
@@ -624,21 +631,6 @@ footer {
     padding: 50px 0 20px;
     margin-top: 80px;
     position: relative;
-}
-
-footer::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    background: linear-gradient(135deg, var(--primary-color) 25%, transparent 25%) -10px 0,
-                linear-gradient(225deg, var(--primary-color) 25%, transparent 25%) -10px 0,
-                linear-gradient(315deg, var(--primary-color) 25%, transparent 25%),
-                linear-gradient(45deg, var(--primary-color) 25%, transparent 25%);
-    background-size: 20px 20px;
-    background-color: var(--light-gray);
 }
 
 .footer-content {
@@ -1602,6 +1594,7 @@ footer::before {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     position: relative;
     overflow: hidden;
+    margin-top: 4rem;
 }
 
 #progression-overview::before {

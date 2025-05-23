@@ -5,7 +5,7 @@ function generateNavigation() {
 
     const navigationItems = [
         { href: 'index.html#maal', text: 'Mål for planen' },
-        { href: 'progresjon.html', text: 'Digitale ferdigheter' },
+        { href: 'ferdigheter.html', text: 'Digitale ferdigheter' },
         { href: 'vurdering.html', text: 'Vurdering' },
         { href: 'ressurser.html', text: 'Ressurser for lærere' }
     ];
